@@ -4,7 +4,8 @@
   "description": "A simple a front-end application that takes advantage of the functionalities NewsAPI provides.",
   "main": "server.js",
   "scripts": {
-    "test": "npm test"
+    "test": "npm test",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",

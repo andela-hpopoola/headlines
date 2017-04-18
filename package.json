@@ -1,0 +1,26 @@
+{
+  "name": "headlines",
+  "version": "1.0.0",
+  "description": "A simple a front-end application that takes advantage of the functionalities NewsAPI provides.",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andela-hpopoola/headlines.git"
+  },
+  "keywords": [
+    "headlines",
+    "andela",
+    "checkpoint",
+    "news",
+    "api"
+  ],
+  "author": "Haruna Popoola",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andela-hpopoola/headlines/issues"
+  },
+  "homepage": "https://github.com/andela-hpopoola/headlines#readme"
+}

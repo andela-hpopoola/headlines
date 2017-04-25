@@ -51,6 +51,7 @@
     "react-dom": "^15.5.4",
     "react-google-login": "^2.8.5",
     "react-router": "^2.8.1",
+    "react-select": "^1.0.0-rc.3",
     "superagent": "^3.5.2"
   }
 }

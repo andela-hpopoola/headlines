@@ -20,7 +20,12 @@ const NewsSingle = (props) => {
             <hr />
             <div>
               <p className="pull-left"> by <strong>{ article.author }</strong></p>
-              <p className="pull-right"><a href={ article.url } target="_blank" className="btn btn-info" role="button">Read More</a></p>
+              <p className="pull-right">
+                <a href={ article.url }
+                  target="_blank"
+                  className="btn btn-info"
+                  role="button">Read More</a>
+              </p>
             </div>
           </div>
         </div>

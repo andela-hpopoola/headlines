@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Select from 'react-select';
 import NewsList from './NewsList.jsx';
 import SourcesList from './SourcesList.jsx';
 import SearchForm from './SearchForm.jsx';
@@ -17,7 +18,7 @@ class News extends Component {
    */
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       articles: [],
       sortBy: this.props.params.sortby,
       source: this.props.params.source,
@@ -57,6 +58,15 @@ class News extends Component {
       sources: NewsStore.getAllSources() || [],
     });
   }
+  
+  logChange(value){
+    console.log (value);
+    this.setState({
+      source: value.value,
+      sortBy: 'top'
+    });
+    NewsActions.getNews(this.state.source, this.state.sortBy);
+  }
 
   /**
    * Search for sources
@@ -67,6 +77,14 @@ class News extends Component {
     const query = queryText.toLowerCase();
     NewsActions.searchSources(query);
     this.setState({ sources: NewsStore.getSources() });
+  }
+
+
+  selectSources(sources) {
+    return sources.map(source => ({
+      value: source.id,
+      label: source.name
+    }));
   }
 
   getSortBy(){
@@ -95,13 +113,19 @@ class News extends Component {
               newsSortBy={ this.state.sortBy }
             />
             <h3>All Sources</h3>
+            <Select
+              name="get_sources_select"
+              value="one"
+              options={ this.selectSources(this.state.sources) }
+              onChange={ this.logChange.bind(this) }
+            />
             <SourcesList sources={ this.state.sources } />
             <SearchForm
               onChange={ this.searchSources.bind(this) }
               sources={ this.state.sources }
             />
         </div>
-  );
+    );
   }
 }
 

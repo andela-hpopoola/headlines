@@ -18,12 +18,14 @@ class News extends Component {
    */
   constructor(props) {
     super(props);
+    NewsActions.getNews(this.props.params.source, this.props.params.sortby);
+    NewsActions.getAllSources();
     this.state = {
-      articles: [],
+      articles: NewsStore.getNews(),
       sortBy: this.props.params.sortby,
       source: this.props.params.source,
       sourceObj: {},
-      sources: []
+      sources: NewsStore.getAllSources()
     };
     this.onChange = this.onChange.bind(this);
   }
@@ -35,8 +37,6 @@ class News extends Component {
   componentDidMount() {
     NewsStore.addChangeListener(this.onChange);
     // TODO: CHECK IF COMPONENT IS MOUNTED§
-    NewsActions.getNews(this.state.source, this.state.sortBy);
-    NewsActions.getAllSources();
   }
 
   /**

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Router, browserHistory, IndexRoute } from 'react-router';
+import { Route, Router, hashHistory, IndexRoute } from 'react-router';
 import Main from './Main.jsx';
 import Home from './Home.jsx';
 import Login from './Login.jsx';
@@ -31,10 +31,11 @@ class Routes extends Component {
    */
   render() {
     return (
-      <Router history={browserHistory}>
+      <Router history={hashHistory}>
         <Route path="/" component={Main}>
-          <IndexRoute component={Home} />
-          <Route path="news(/:source/:sortby)" component={News}/>
+          <IndexRoute component={Login} />
+          <Route path="news/:source/:sortby" component={News}/>
+          <Route path="news" component={Home}/>
           <Route path="login" component={Login} />
           {/*<Route path="news" component={News} onEnter={requireAuth} />*/}
         </Route>

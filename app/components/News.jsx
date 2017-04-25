@@ -18,14 +18,12 @@ class News extends Component {
    */
   constructor(props) {
     super(props);
-    NewsActions.getNews(this.props.params.source, this.props.params.sortby);
-    NewsActions.getAllSources();
     this.state = {
-      articles: NewsStore.getNews(),
+      articles: [],
       sortBy: this.props.params.sortby,
       source: this.props.params.source,
       sourceObj: {},
-      sources: NewsStore.getAllSources()
+      sources: []
     };
     this.onChange = this.onChange.bind(this);
   }
@@ -37,6 +35,8 @@ class News extends Component {
   componentDidMount() {
     NewsStore.addChangeListener(this.onChange);
     // TODO: CHECK IF COMPONENT IS MOUNTED§
+    NewsActions.getNews(this.props.params.source, this.props.params.sortby);
+    NewsActions.getAllSources();
   }
 
   /**
@@ -65,7 +65,13 @@ class News extends Component {
       source: value.value,
       sortBy: 'top'
     });
+    // const sortBysAvailable = 'top';
+    // const source_id = value.value;
     NewsActions.getNews(this.state.source, this.state.sortBy);
+    // hashHistory.push(`news/${this.state.source}/${this.state.sortBy}`);
+    // hashHistory.replace(`news/${this.state.source}/${this.state.sortBy}`);
+    // this.props.history.pushState(`news/${this.state.source}/${this.state.sortBy}`);
+    // <Redirect to={`news/${this.state.source}/${this.state.sortBy}`} />
   }
 
   /**
@@ -87,26 +93,26 @@ class News extends Component {
     }));
   }
 
-  getSortBy(){
-    const sortByMe = NewsStore.getSourceObj(this.props.params.source);
-    const sortLength = sortByMe.sortBy.length;
-    let sortByType = '';
-    if (sortLength > 1){
-      for (let i = 0; i < sortLength; i += 1) {
-        sortByType += `${sortByMe.sortBy[i]} `;
-      }
-    }
-  }
+  // getSortBy(){
+  //   const sortByMe = NewsStore.getSourceObj(this.props.params.source);
+  //   const sortLength = sortByMe.sortBy.length;
+  //   let sortByType = '';
+  //   if (sortLength > 1){
+  //     for (let i = 0; i < sortLength; i += 1) {
+  //       sortByType += `${sortByMe.sortBy[i]} `;
+  //     }
+  //   }
+  // }
   /**
    * Display the News
    * @return {jsx} The News Content
    */
   render() {
-    const sortByType = this.getSortBy();
+    // const sortByType = this.getSortBy();
     return (
         <div>
             <h3>News Component { this.props.params.source }</h3>
-            {sortByType}
+            {/*{sortByType}*/}
             <NewsList
               articles={ this.state.articles }
               newsSource={ this.state.source }
@@ -119,11 +125,11 @@ class News extends Component {
               options={ this.selectSources(this.state.sources) }
               onChange={ this.logChange.bind(this) }
             />
-            <SourcesList sources={ this.state.sources } />
-            <SearchForm
+            {/*<SourcesList sources={ this.state.sources } />*/}
+            {/*<SearchForm
               onChange={ this.searchSources.bind(this) }
               sources={ this.state.sources }
-            />
+            />*/}
         </div>
     );
   }

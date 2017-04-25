@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { browserHistory } from 'react-router';
+import { hashHistory } from 'react-router';
 import GoogleLogin from 'react-google-login';
 import Storage from './../storage/localStorage';
 
@@ -22,9 +22,9 @@ class Login extends Component {
       console.log(JSON.parse(localStorage.getItem('profile')));
       this.setState({ profile: JSON.parse(localStorage.getItem('profile'))});
       console.log(response.profileObj.name);
-      browserHistory.push('/');
+      hashHistory.push('/');
     } else {
-      this.setState({ errors: 'Unable to Login' });
+      console.log(profile);
     }
   }
 

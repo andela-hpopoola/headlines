@@ -39,15 +39,16 @@ const NewsStore = Object.assign(EventEmitter.prototype, {
   },
 
   getSourceObj(sourceId) {
-    const returnedSources = sources.filter(
-      source => source.id === sourceId
-    );
-    return {
-      name: returnedSources[0].name,
-      sortBy: returnedSources[0].sortBysAvailable,
-      description: returnedSources[0].description,
-      category: returnedSources[0].category,
-    };
+    // const returnedSources = sources.filter(
+    //   source => source.id === sourceId
+    // );
+    // return {
+    //   name: returnedSources[0].name,
+    //   sortBy: returnedSources[0].sortBysAvailable,
+    //   description: returnedSources[0].description,
+    //   category: returnedSources[0].category,
+    // };
+    return {};
   },
 
   searchSources(queryText) {

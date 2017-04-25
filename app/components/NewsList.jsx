@@ -14,7 +14,7 @@ const NewsList = (props) => {
   return (
     <div>
       <h3>NewsList Component - {props.newsSource}</h3>
-      {articles}
+      <div className="row"> { articles } </div>
     </div>
   );
 };

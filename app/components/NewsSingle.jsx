@@ -9,13 +9,22 @@ import PropTypes from 'prop-types';
 const NewsSingle = (props) => {
   const article = props.article;
   const mydate = Date.parse(article.publishedAt);
-  const publishedDate = new Date(mydate).toDateString();
+  const publishedDate = new Date(mydate).toLocaleDateString();
   return (
-    <div>
-      <h3><a href={article.url} target="_blank">{article.title} </a><br />
-      <small>{article.author} - {publishedDate}</small></h3>
-      <p> {article.description} </p>
-    </div>
+      <div className="col-sm-6 col-md-4">
+        <div className="thumbnail">
+          <img src={ article.urlToImage } alt={ article.title } />
+          <div className="caption">
+            <p className="text-muted">{publishedDate}</p>
+            <h3><a href={ article.url } target="_blank">{ article.title } </a></h3>
+            <hr />
+            <div>
+              <p className="pull-left"> by <strong>{ article.author }</strong></p>
+              <p className="pull-right"><a href={ article.url } target="_blank" className="btn btn-info" role="button">Read More</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
   );
 };
 

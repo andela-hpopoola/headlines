@@ -10,11 +10,11 @@ import Storage from './../storage/localStorage';
  * Check if the user is logged in
  * @return {boolean} the login status
  */
-const requireAuth = () => {
+const requireAuth = (nextState, replace) => {
   if (!Storage.get('profile')) {
-    Route.replace({
-      pathname: '/login',
-      state: { nextPathname: Route.nextState.location.pathname }
+    replace({
+      pathname: '/',
+      state: { nextPathname: nextState.location.pathname }
     });
   }
 };
@@ -34,10 +34,10 @@ class Routes extends Component {
       <Router history={hashHistory}>
         <Route path="/" component={Main}>
           <IndexRoute component={Login} />
-          <Route path="news/:source/:sortby" component={News}/>
-          <Route path="news" component={Home}/>
-          <Route path="login" component={Login} />
-          {/*<Route path="news" component={News} onEnter={requireAuth} />*/}
+          <Route path="news/:source/:sortby" component={News} />
+          <Route path="news" component={Home} onEnter={ requireAuth } />
+          {/*<Route path="logout" component={Logout} />*/}
+          {/*<Route path="news" component={News} />*/}
         </Route>
       </Router>
     );

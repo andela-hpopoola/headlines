@@ -7,10 +7,6 @@ const history = createHistory({
   forceRefresh: true,
 });
 
-// if (Storage.get('profile')) {
-//   history.push('/#/news');
-//   window.location.reload();
-// }
 
 /**
  * Class displaying Login Page
@@ -32,7 +28,6 @@ class Login extends Component {
       // this.setState({ profile: JSON.parse(localStorage.getItem('profile'))});
       // console.log(response.profileObj.name);
       history.push('/#/news');
-      window.location.reload();
     } else {
       console.log(profile);
     }

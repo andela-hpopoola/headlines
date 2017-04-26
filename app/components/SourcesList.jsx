@@ -9,10 +9,17 @@ import { Link } from 'react-router';
  */
 const SourcesList = (props) => {
   const sources = props.sources.map(
-    (source, index) => <Link to={`news/${source.id}/${source.sortBysAvailable[0]}`} key={index}> {source.name} </Link>
+    (source, index) => 
+      <div className="col-sm-4 col-md-3">
+        <div className="sources__box">
+          <Link to={`news/${source.id}/${source.sortBysAvailable[0]}`} key={index}>
+            <h3>{source.name}</h3>
+          </Link>
+        </div>
+      </div>
   );
   return (
-      <div>
+      <div className="row">
           <h3> List of Sources </h3>
           {sources}
       </div>

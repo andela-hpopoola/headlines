@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
+import { Link } from 'react-router';
 import NewsList from './NewsList.jsx';
 import SourcesList from './SourcesList.jsx';
 import SearchForm from './SearchForm.jsx';
@@ -67,11 +68,15 @@ class News extends Component {
     });
     // const sortBysAvailable = 'top';
     // const source_id = value.value;
-    NewsActions.getNews(this.state.source, this.state.sortBy);
+    // NewsActions.getNews(this.state.source, this.state.sortBy);
     // hashHistory.push(`news/${this.state.source}/${this.state.sortBy}`);
     // hashHistory.replace(`news/${this.state.source}/${this.state.sortBy}`);
     // this.props.history.pushState(`news/${this.state.source}/${this.state.sortBy}`);
     // <Redirect to={`news/${this.state.source}/${this.state.sortBy}`} />
+  }
+
+  loadPage(){
+    NewsActions.getNews(this.state.source, this.state.sortBy);
   }
 
   /**
@@ -79,11 +84,10 @@ class News extends Component {
    * @param {string} queryText what we wish to search for
    * @return {void} returns nothing
    */
-  searchSources(queryText) {
-    const query = queryText.toLowerCase();
-    NewsActions.searchSources(query);
-    this.setState({ sources: NewsStore.getSources() });
-  }
+  // searchSources(queryText) {
+  //   const query = queryText.toLowerCase();
+  //   // NewsActions.searchSources(query);
+  // }
 
 
   selectSources(sources) {
@@ -111,20 +115,38 @@ class News extends Component {
     // const sortByType = this.getSortBy();
     return (
         <div>
-            <h3>News Component { this.props.params.source }</h3>
+            <div className="page-header">
+              <h1>News Component { this.props.params.source }
+                <br /><small>Subtext for header</small></h1>
+            </div>
             {/*{sortByType}*/}
-            <NewsList
-              articles={ this.state.articles }
-              newsSource={ this.state.source }
-              newsSortBy={ this.state.sortBy }
-            />
-            <h3>All Sources</h3>
-            <Select
-              name="get_sources_select"
-              value="one"
-              options={ this.selectSources(this.state.sources) }
-              onChange={ this.logChange.bind(this) }
-            />
+
+            <div className="col-sm-8">
+              <NewsList
+                articles={ this.state.articles }
+                newsSource={ this.state.source }
+                newsSortBy={ this.state.sortBy }
+              />
+            </div>
+
+            <div className="col-sm-4">
+              <div className="widget">
+
+                <h3>All Sources</h3>
+                <Select
+                  name="get_sources_select"
+                  value="one"
+                  options={ this.selectSources(this.state.sources) }
+                  onChange={ this.logChange.bind(this) }
+                />
+                <Link to={`news/${this.state.source}/top`} className="btn btn-primary" onClick={ this.loadPage.bind(this) }>
+                  View News
+                </Link>
+              </div>
+
+              <div className="widget">
+              </div>
+            </div>
             {/*<SourcesList sources={ this.state.sources } />*/}
             {/*<SearchForm
               onChange={ this.searchSources.bind(this) }

@@ -11,23 +11,24 @@ const NewsSingle = (props) => {
   const mydate = Date.parse(article.publishedAt);
   const publishedDate = new Date(mydate).toLocaleDateString();
   return (
-      <div className="col-sm-6 col-md-4">
-        <div className="thumbnail">
-          <img src={ article.urlToImage } alt={ article.title } />
-          <div className="caption">
-            <p className="text-muted">{publishedDate}</p>
-            <h3><a href={ article.url } target="_blank">{ article.title } </a></h3>
-            <hr />
-            <div>
-              <p className="pull-left"> by <strong>{ article.author }</strong></p>
-              <p className="pull-right">
-                <a href={ article.url }
-                  target="_blank"
-                  className="btn btn-info"
-                  role="button">Read More</a>
-              </p>
+      <div className="col-sm-6">
+        <div className="thumbnail article">
+          <a href={ article.url } target="_blank">
+            <div className="article__image">
+              <img src={ article.urlToImage } alt={ article.title } className="img-responsive" />
             </div>
-          </div>
+            <div className="caption article__body">
+              <p className="article__intro">{publishedDate}</p>
+              <h3 className="article__title">{ article.title }</h3>
+              <hr />
+              <div>
+                <p className="article__lower">
+                  <span>by </span>
+                  <strong className="article__author">{ article.author }</strong>
+                </p>
+              </div>
+            </div>
+          </a>
         </div>
       </div>
   );

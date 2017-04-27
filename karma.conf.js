@@ -1,6 +1,6 @@
-const webpackConfig = require('./webpack.config.js');
+var webpackConfig = require('./webpack.config.js');
 
-let configuration = {};
+var configuration = {};
 
 configuration = {
   browsers: ['Chrome'],

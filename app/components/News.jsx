@@ -123,12 +123,11 @@ class News extends Component {
             <div className="page-header text-center">
               <h1>{ this.state.sourceName }</h1>
               <div className="lead">{ this.state.sourceDescription }</div>
-              <div className="lead"> {this.state.sortByType }
                 <SortByList
-                sort ={ this.state.sortByType || [] }
-                sourceID = { this.state.source } 
+                sort = { this.state.sortByType || [] }
+                sourceID = { this.state.source }
+                currentSort = { this.state.sortBy }
                 onClick={ this.loadSortPage.bind(this) } />
-              </div>
             </div>
 
             <div className="col-sm-8">

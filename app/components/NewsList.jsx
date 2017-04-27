@@ -12,10 +12,9 @@ const NewsList = (props) => {
     (article, index) => <NewsSingle article={article} key={index}/>
   );
   return (
-    <div>
-      <h3>NewsList Component - {props.newsSource}</h3>
-      <div className="row"> { articles } </div>
-    </div>
+      <div className="row">
+        { articles }
+      </div>
   );
 };
 
@@ -24,6 +23,7 @@ const NewsList = (props) => {
  */
 NewsList.propTypes = {
   articles: PropTypes.array,
+  newsSortBy: PropTypes.string,
   newsSource: PropTypes.string
 };
 

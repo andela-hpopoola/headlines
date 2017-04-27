@@ -8,7 +8,7 @@ import { Link } from 'react-router';
  * @returns {jsx} the page navigation
  */
 class SortByList extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
   }
   /**
@@ -20,21 +20,28 @@ class SortByList extends Component {
     this.props.onClick(source, sortBy);
   }
 
-  render(){
+  render() {
+    const currentSort = this.props.currentSort;
     const listOfSort = this.props.sort.map(
       (sorting, index) =>
         <Link
           to={`news/${this.props.sourceID}/${this.props.sort[index]}`}
           key={index}
+          className={currentSort === this.props.sort[index] ? 'btn btn-default disabled' : 'btn btn-success '}
+          aria-label={index}
           onClick={this.handleSort.bind(this, this.props.sourceID, this.props.sort[index])}
         >
-          { this.props.sort[index]}
+          Sort by { this.props.sort[index]}
        </Link>
     );
     return (
       <div>
-        <h3>Sort By</h3>
-          { listOfSort }
+        <div className="btn-group" role="group" aria-label="Sort Articles">
+            { listOfSort }
+        </div>
+        <div className="sorting__current">
+          Currently sorted by { currentSort } articles
+        </div>
       </div>
     );
   }
@@ -44,6 +51,7 @@ class SortByList extends Component {
  */
 SortByList.propTypes = {
   sourceID: PropTypes.string,
+  currentSort: PropTypes.string,
   sort: PropTypes.array,
   onClick: PropTypes.func
 };

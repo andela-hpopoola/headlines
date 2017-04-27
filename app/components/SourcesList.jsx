@@ -20,7 +20,6 @@ const SourcesList = (props) => {
   );
   return (
       <div className="row">
-          <h3> List of Sources </h3>
           {sources}
       </div>
   );

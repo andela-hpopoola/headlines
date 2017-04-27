@@ -66,12 +66,12 @@ class Home extends Component {
   render() {
     return (
         <div>
-            <h3>All Sources</h3>
-            <SourcesList sources={ this.state.sources } />  
+            <h3>All Sources</h3>  
             <SearchForm
               onChange={ this.searchSources.bind(this) }
               sources={ this.state.sources }
             />
+            <SourcesList sources={ this.state.sources } />
         </div>
     );
   }

@@ -6,6 +6,7 @@ import SourcesList from './SourcesList.jsx';
 import SearchForm from './SearchForm.jsx';
 import NewsStore from '../stores/newsStore';
 import NewsActions from '../actions/newsActions';
+import SortByList from './SortByList.jsx';
 
 /**
  * Class to display news
@@ -24,6 +25,7 @@ class News extends Component {
       sortBy: this.props.params.sortby,
       source: this.props.params.source,
       sourceObj: {},
+      selectedSource: '',
       sources: []
     };
     this.onChange = this.onChange.bind(this);
@@ -53,29 +55,27 @@ class News extends Component {
    * @return {void} returns nothing
    */
   onChange() {
+    const currentObj = this.getSortBy();
     this.setState({
       articles: NewsStore.getNews(this.state.source, this.state.sortBy) || [],
       sourceObj: NewsStore.getSourceObj(this.state.source) || [],
       sources: NewsStore.getAllSources() || [],
+      sortByType: currentObj.sortByType,
+      sourceName: currentObj.sourceName,
+      sourceDescription: currentObj.sourceDescription
     });
   }
   
   logChange(value){
-    console.log (value);
     this.setState({
       source: value.value,
-      sortBy: 'top'
+      sortBy: this.state.sortBy,
+      selectedSource: value.label
     });
-    // const sortBysAvailable = 'top';
-    // const source_id = value.value;
-    // NewsActions.getNews(this.state.source, this.state.sortBy);
-    // hashHistory.push(`news/${this.state.source}/${this.state.sortBy}`);
-    // hashHistory.replace(`news/${this.state.source}/${this.state.sortBy}`);
-    // this.props.history.pushState(`news/${this.state.source}/${this.state.sortBy}`);
-    // <Redirect to={`news/${this.state.source}/${this.state.sortBy}`} />
   }
 
   loadPage(){
+    console.log ('Load Page clicked');
     NewsActions.getNews(this.state.source, this.state.sortBy);
   }
 
@@ -97,29 +97,39 @@ class News extends Component {
     }));
   }
 
-  // getSortBy(){
-  //   const sortByMe = NewsStore.getSourceObj(this.props.params.source);
-  //   const sortLength = sortByMe.sortBy.length;
-  //   let sortByType = '';
-  //   if (sortLength > 1){
-  //     for (let i = 0; i < sortLength; i += 1) {
-  //       sortByType += `${sortByMe.sortBy[i]} `;
-  //     }
-  //   }
-  // }
+  getSortBy() {
+    const singleSource = NewsStore.getSourceObj(this.props.params.source);
+    // console.log(singleSource);
+    if (typeof singleSource.name !== 'undefined') {
+      const sortLength = singleSource.sortBy.length;
+      const sourceName = singleSource.name;
+      const sourceDescription = singleSource.description;
+      const sortByType = singleSource.sortBy;
+      if (sortLength >= 1) {
+        return { sortByType, sourceName, sourceDescription };
+      }
+    }
+    return { sortByType: 'no type', sourceName: 'no source Name', sourceDescription: 'no Description' };
+  }
   /**
    * Display the News
    * @return {jsx} The News Content
    */
   render() {
-    // const sortByType = this.getSortBy();
+    // const mySortBy = this.getSortBy().map((sortByList, index) =>
+    //   <SortByList sortBy={sortByList} key={index} sourceID = {this.state.source} />
+    // );
     return (
         <div>
-            <div className="page-header">
-              <h1>News Component { this.props.params.source }
-                <br /><small>Subtext for header</small></h1>
+            <div className="page-header text-center">
+              <h1>{ this.state.sourceName }</h1>
+              <div className="lead">{ this.state.sourceDescription }</div>
+              <div className="lead"> {this.state.sortByType }
+                <SortByList
+                sort ={ this.state.sortByType || [] }
+                sourceID = {this.state.source} onClick={ this.loadPage.bind(this) } />
+              </div>
             </div>
-            {/*{sortByType}*/}
 
             <div className="col-sm-8">
               <NewsList
@@ -135,12 +145,12 @@ class News extends Component {
                 <h3>All Sources</h3>
                 <Select
                   name="get_sources_select"
-                  value="one"
+                  value={this.state.source}
                   options={ this.selectSources(this.state.sources) }
                   onChange={ this.logChange.bind(this) }
                 />
                 <Link to={`news/${this.state.source}/top`} className="btn btn-primary" onClick={ this.loadPage.bind(this) }>
-                  View News
+                  View {this.state.selectedSource } News
                 </Link>
               </div>
 

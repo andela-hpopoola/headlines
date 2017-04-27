@@ -23,12 +23,10 @@ class SearchForm extends Component {
    */
   render() {
     return (
-      <div>
-        <div>
-          <form>
-            <input className="form-control" onChange={this.handleSearch.bind(this)} />
-          </form>
-        </div>
+      <div className="row search">
+        <form className="col-md-6 col-md-offset-3">
+          <input className="form-control search__input" onChange={this.handleSearch.bind(this)} />
+        </form>
       </div>
     );
   }

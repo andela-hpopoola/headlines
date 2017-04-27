@@ -39,16 +39,23 @@ const NewsStore = Object.assign(EventEmitter.prototype, {
   },
 
   getSourceObj(sourceId) {
-    // const returnedSources = sources.filter(
-    //   source => source.id === sourceId
-    // );
-    // return {
-    //   name: returnedSources[0].name,
-    //   sortBy: returnedSources[0].sortBysAvailable,
-    //   description: returnedSources[0].description,
-    //   category: returnedSources[0].category,
-    // };
-    return {};
+    if (sources) {
+      console.log(sources,'All Sources');
+      const returnedSources = sources.filter(
+        source => source.id === sourceId
+      );
+      console.log(returnedSources[0], 'Returned Sources');
+      if (typeof returnedSources[0] === 'undefined') {
+        return {};
+      } else {
+        return {
+          name: returnedSources[0].name,
+          sortBy: returnedSources[0].sortBysAvailable,
+          description: returnedSources[0].description,
+          category: returnedSources[0].category,
+        };
+      }
+    }
   },
 
   searchSources(queryText) {

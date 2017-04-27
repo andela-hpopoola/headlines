@@ -44,14 +44,23 @@ class Login extends Component {
    */
   render() {
     return (
-      <div>
-        <h3>Login Component</h3>
-        <GoogleLogin
-            clientId="85385577141-0nb9rf764mh1eetjmd8p5jjmthr8e8hq.apps.googleusercontent.com"
-            buttonText="Login"
-            onSuccess={this.responseFromGoogle}
-            onFailure={this.responseFromGoogle}
-        />
+      <div className="full">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-6 col-md-offset-3">
+              <div className="login">
+                <h3 className="login__title">Welcome to Headlines</h3>
+                <p className="lead">Get News from over 70 Sources</p>
+                <GoogleLogin
+                    clientId="85385577141-0nb9rf764mh1eetjmd8p5jjmthr8e8hq.apps.googleusercontent.com"
+                    buttonText="Login"
+                    onSuccess={this.responseFromGoogle}
+                    onFailure={this.responseFromGoogle}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

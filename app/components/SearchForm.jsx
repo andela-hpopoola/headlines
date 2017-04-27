@@ -18,7 +18,7 @@ class SearchForm extends Component {
   }
 
   /**
-   * Renders the Alert Message
+   * Renders the Search Input
    * @return {string} Search Form
    */
   render() {

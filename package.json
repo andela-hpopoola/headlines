@@ -49,7 +49,7 @@
     "history": "^4.6.1",
     "jquery": "^2.2.1",
     "karma": "^0.13.22",
-    "karma-chrome-launcher": "^0.2.2",
+    "¡chrome-launcher": "^0.2.2",
     "karma-mocha": "^0.2.2",
     "karma-mocha-reporter": "^2.0.0",
     "karma-sourcemap-loader": "^0.3.7",

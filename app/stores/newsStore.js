@@ -2,13 +2,11 @@
 import { EventEmitter } from 'events';
 import Dispatcher from '../dispatcher/appDispatcher';
 import ActionTypes from '../constants/actionTypes';
-import NewsApi from '../api/NewsApi';
 
 const CHANGE_EVENT = 'change';
 let sources = [];
 let filteredSources = [];
 let news = [];
-let sortBy = [];
 
 const NewsStore = Object.assign(EventEmitter.prototype, {
 
@@ -40,14 +38,12 @@ const NewsStore = Object.assign(EventEmitter.prototype, {
 
   getSourceObj(sourceId) {
     if (sources) {
-      console.log(sources,'All Sources');
+      console.log(sources, 'All Sources');
       const returnedSources = sources.filter(
         source => source.id === sourceId
       );
       console.log(returnedSources[0], 'Returned Sources');
-      if (typeof returnedSources[0] === 'undefined') {
-        return {};
-      } else {
+      if (typeof returnedSources[0] !== 'undefined') {
         return {
           name: returnedSources[0].name,
           sortBy: returnedSources[0].sortBysAvailable,
@@ -55,6 +51,7 @@ const NewsStore = Object.assign(EventEmitter.prototype, {
           category: returnedSources[0].category,
         };
       }
+      return {};
     }
   },
 

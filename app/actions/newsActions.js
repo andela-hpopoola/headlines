@@ -1,18 +1,9 @@
 import request from 'superagent';
 import Dispatcher from '../dispatcher/appDispatcher';
-import NewsApi from '../api/NewsApi';
 import ActionTypes from '../constants/actionTypes';
 
 
 const NewsActions = {
-  getAll(news) {
-    const allNews = NewsApi.getAllNews();
-
-    Dispatcher.dispatch({
-      actionType: ActionTypes.ALL_NEWS,
-      articles: allNews
-    });
-  },
 
   getAllSources: () => {
     const SOURCE_URL = 'https://newsapi.org/v1/sources';

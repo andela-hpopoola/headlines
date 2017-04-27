@@ -22,26 +22,30 @@ class SortByList extends Component {
 
   render() {
     const currentSort = this.props.currentSort;
+    let showSortText = false;
+    if (this.props.sort.length >= 1){
+      showSortText = true;
+    }
     const listOfSort = this.props.sort.map(
       (sorting, index) =>
         <Link
           to={`news/${this.props.sourceID}/${this.props.sort[index]}`}
           key={index}
-          className={currentSort === this.props.sort[index] ? 'btn btn-default disabled' : 'btn btn-success '}
+          className={currentSort === this.props.sort[index] ? 'btn btn-default disabled' : 'btn btn-primary'}
           aria-label={index}
           onClick={this.handleSort.bind(this, this.props.sourceID, this.props.sort[index])}
         >
-          Sort by { this.props.sort[index]}
+          View { this.props.sort[index]} top
        </Link>
     );
     return (
-      <div>
-        <div className="btn-group" role="group" aria-label="Sort Articles">
-            { listOfSort }
-        </div>
+      <div className="btn-group" role="group" aria-label="Sort Articles">
+        { listOfSort }
+        { showSortText ?
         <div className="sorting__current">
-          Currently sorted by { currentSort } articles
+          Currently viewing { currentSort } news
         </div>
+        : ' ' }
       </div>
     );
   }

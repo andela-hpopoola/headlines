@@ -48,11 +48,6 @@ body{
   border-radius: 0;
   margin-bottom: 30px;
   
-  &:hover{
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.05);
-  }
-  
   .article__image{
 	  position: relative;
     height: 180px;
@@ -73,22 +68,21 @@ body{
   .article__body{
     font-weight: 400;
     padding: 30px;
+    color: #767676;
 
     .article__intro {
-    color: #767676;
-    font-size: 12px;
+      font-size: 12px;
     }
 
     .article__title {
-    color: #555555;
-    font-weight: 400;
-    height: 80px;
-    font-size: 18px;
-    line-height: 1.6;
-    margin: 0;
-    margin-bottom: 30px;
-    text-overflow: ellipsis;
-    overflow: hidden;
+      font-weight: 400;
+      height: 80px;
+      font-size: 18px;
+      line-height: 1.6;
+      margin: 0;
+      margin-bottom: 30px;
+      text-overflow: ellipsis;
+      overflow: hidden;
     }
   }
   
@@ -104,9 +98,23 @@ body{
     margin: 0;
 
     .article__author{
-    letter-spacing: 0.5px;
+      letter-spacing: 0.5px;
     }
   }
+
+  &:hover{
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.05);
+
+    a {
+      text-decoration: none;
+    }
+
+    .article__body, .article__lower{
+      color: #446cb3;
+    }
+  }
+  
 }
 
 

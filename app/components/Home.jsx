@@ -66,7 +66,7 @@ class Home extends Component {
   render() {
     return (
         <div>
-            <h3>All Sources</h3>  
+            <h1 className="text-center">All Sources</h1>
             <SearchForm
               onChange={ this.searchSources.bind(this) }
               sources={ this.state.sources }

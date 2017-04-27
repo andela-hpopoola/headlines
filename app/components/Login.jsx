@@ -28,12 +28,12 @@ class Login extends Component {
     // console.log(profile);
     if (profile) {
       Storage.set('profile', JSON.stringify(profile));
-      console.log(JSON.parse(localStorage.getItem('profile')));
+      console.log(JSON.parse(Storage.get('profile')));
       // this.setState({ profile: JSON.parse(localStorage.getItem('profile'))});
-      // console.log(response.profileObj.name);
       history.push('/#/news');
       window.location.reload();
     } else {
+      // TODO: Process error message here
       console.log(profile);
     }
   }
@@ -52,10 +52,10 @@ class Login extends Component {
                 <h3 className="login__title">Welcome to Headlines</h3>
                 <p className="lead">Get News from over 70 Sources</p>
                 <GoogleLogin
-                    clientId="85385577141-0nb9rf764mh1eetjmd8p5jjmthr8e8hq.apps.googleusercontent.com"
-                    buttonText="Login"
-                    onSuccess={this.responseFromGoogle}
-                    onFailure={this.responseFromGoogle}
+                  clientId="85385577141-0nb9rf764mh1eetjmd8p5jjmthr8e8hq.apps.googleusercontent.com"
+                  buttonText="Login"
+                  onSuccess={this.responseFromGoogle}
+                  onFailure={this.responseFromGoogle}
                 />
               </div>
             </div>

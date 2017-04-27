@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Select from 'react-select';
 import { Link } from 'react-router';
 import NewsList from './NewsList.jsx';
-import SourcesList from './SourcesList.jsx';
-import SearchForm from './SearchForm.jsx';
 import NewsStore from '../stores/newsStore';
 import NewsActions from '../actions/newsActions';
 import SortByList from './SortByList.jsx';
@@ -90,7 +89,8 @@ class News extends Component {
   selectSources(sources) {
     return sources.map(source => ({
       value: source.id,
-      label: source.name
+      label: source.name,
+      clearableValue: true
     }));
   }
 
@@ -115,9 +115,6 @@ class News extends Component {
    * @return {jsx} The News Content
    */
   render() {
-    // const mySortBy = this.getSortBy().map((sortByList, index) =>
-    //   <SortByList sortBy={sortByList} key={index} sourceID = {this.state.source} />
-    // );
     return (
         <div>
             <div className="page-header text-center">
@@ -157,14 +154,19 @@ class News extends Component {
               <div className="widget">
               </div>
             </div>
-            {/*<SourcesList sources={ this.state.sources } />*/}
-            {/*<SearchForm
-              onChange={ this.searchSources.bind(this) }
-              sources={ this.state.sources }
-            />*/}
         </div>
     );
   }
 }
+
+/**
+ * Set the PropTypes for News
+ */
+News.propTypes = {
+  params: PropTypes.object,
+  source: PropTypes.array,
+  sortby: PropTypes.string
+};
+
 
 export default News;

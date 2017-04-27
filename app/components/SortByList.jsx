@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 
@@ -7,24 +7,45 @@ import { Link } from 'react-router';
  * @param {object} props get the properties
  * @returns {jsx} the page navigation
  */
-const SortByList = (props) => {
-  console.log(props);
-  const listOfSort = props.sort.map(
-    (article, index) => <Link to={`news/${props.sourceID}/${props.sort[index]}`} key={index}>{ props.sort[index]}</Link>
-  );
-  return (
-    <div>
-      <h3>Sort By</h3>
-        { listOfSort }
-    </div>
-  );
-};
+class SortByList extends Component {
+  constructor(props){
+    super(props);
+  }
+  /**
+   * Returns the value in the Search Field
+   * @param {function} e - event of the field
+   * @return {string} Value in String Field
+   */
+  handleSort(source, sortBy) {
+    this.props.onClick(source, sortBy);
+  }
+
+  render(){
+    const listOfSort = this.props.sort.map(
+      (sorting, index) =>
+        <Link
+          to={`news/${this.props.sourceID}/${this.props.sort[index]}`}
+          key={index}
+          onClick={this.handleSort.bind(this, this.props.sourceID, this.props.sort[index])}
+        >
+          { this.props.sort[index]}
+       </Link>
+    );
+    return (
+      <div>
+        <h3>Sort By</h3>
+          { listOfSort }
+      </div>
+    );
+  }
+}
 /**
  * Set the PropTypes for Sources List
  */
 SortByList.propTypes = {
-  sourceName: PropTypes.string,
+  sourceID: PropTypes.string,
   sort: PropTypes.array,
+  onClick: PropTypes.func
 };
 
 export default SortByList;

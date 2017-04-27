@@ -33,7 +33,7 @@ const NewsActions = {
     request
     .get(NEWS_URL)
     .query({ source })
-    .query({ sortBy: 'top' })
+    .query({ sortBy })
     .end((err, res) => {
       Dispatcher.dispatch({
         actionType: ActionTypes.ALL_NEWS,

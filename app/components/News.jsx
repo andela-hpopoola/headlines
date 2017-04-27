@@ -66,7 +66,7 @@ class News extends Component {
     });
   }
   
-  logChange(value){
+  logChange(value) {
     this.setState({
       source: value.value,
       sortBy: this.state.sortBy,
@@ -74,21 +74,18 @@ class News extends Component {
     });
   }
 
-  loadPage(){
-    console.log ('Load Page clicked');
+  loadPage() {
     NewsActions.getNews(this.state.source, this.state.sortBy);
   }
 
-  /**
-   * Search for sources
-   * @param {string} queryText what we wish to search for
-   * @return {void} returns nothing
-   */
-  // searchSources(queryText) {
-  //   const query = queryText.toLowerCase();
-  //   // NewsActions.searchSources(query);
-  // }
-
+  loadSortPage(source, sortBy) {
+    console.log('Load Sort Page Clicked ', source, sortBy);
+    this.setState({
+      source,
+      sortBy
+    });
+    NewsActions.getNews(source, sortBy);
+  }
 
   selectSources(sources) {
     return sources.map(source => ({
@@ -105,11 +102,13 @@ class News extends Component {
       const sourceName = singleSource.name;
       const sourceDescription = singleSource.description;
       const sortByType = singleSource.sortBy;
-      if (sortLength >= 1) {
+      if (sortLength > 1) {
         return { sortByType, sourceName, sourceDescription };
+      } else {
+        return { sortByType: [], sourceName, sourceDescription }
       }
     }
-    return { sortByType: 'no type', sourceName: 'no source Name', sourceDescription: 'no Description' };
+    return { sortByType: [], sourceName: 'no source Name', sourceDescription: 'no Description' };
   }
   /**
    * Display the News
@@ -127,7 +126,8 @@ class News extends Component {
               <div className="lead"> {this.state.sortByType }
                 <SortByList
                 sort ={ this.state.sortByType || [] }
-                sourceID = {this.state.source} onClick={ this.loadPage.bind(this) } />
+                sourceID = { this.state.source } 
+                onClick={ this.loadSortPage.bind(this) } />
               </div>
             </div>
 
@@ -148,6 +148,7 @@ class News extends Component {
                   value={this.state.source}
                   options={ this.selectSources(this.state.sources) }
                   onChange={ this.logChange.bind(this) }
+                  clearableValue= {true}
                 />
                 <Link to={`news/${this.state.source}/top`} className="btn btn-primary" onClick={ this.loadPage.bind(this) }>
                   View {this.state.selectedSource } News

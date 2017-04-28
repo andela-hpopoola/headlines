@@ -11,6 +11,7 @@ class SortByList extends Component {
   constructor(props) {
     super(props);
   }
+  
   /**
    * Returns the value in the Search Field
    * @param {function} e - event of the field
@@ -35,7 +36,7 @@ class SortByList extends Component {
           aria-label={index}
           onClick={this.handleSort.bind(this, this.props.sourceID, this.props.sort[index])}
         >
-          View { this.props.sort[index]} top
+          View { this.props.sort[index]} news
        </Link>
     );
     return (

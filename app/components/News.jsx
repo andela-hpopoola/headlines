@@ -63,6 +63,7 @@ class News extends Component {
       sourceName: currentObj.sourceName,
       sourceDescription: currentObj.sourceDescription
     });
+
   }
   
   logChange(value) {
@@ -105,7 +106,7 @@ class News extends Component {
       if (sortLength > 1) {
         return { sortByType, sourceName, sourceDescription };
       } else {
-        return { sortByType: [], sourceName, sourceDescription }
+        return { sortByType: [sortByType[0]], sourceName, sourceDescription }
       }
     }
     return { sortByType: [], sourceName: 'no source Name', sourceDescription: 'no Description' };
@@ -146,7 +147,7 @@ class News extends Component {
                   onChange={ this.logChange.bind(this) }
                   clearableValue= {true}
                 />
-                <Link to={`news/${this.state.source}/top`} className="btn btn-primary" onClick={ this.loadPage.bind(this) }>
+                <Link to={`news/${this.state.source}/${this.state.sortByType}`} className="btn btn-primary" onClick={ this.loadPage.bind(this) }>
                   View {this.state.selectedSource } News
                 </Link>
               </div>

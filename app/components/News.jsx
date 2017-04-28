@@ -93,16 +93,6 @@ class News extends Component {
     }));
   }
 
-  // getSortBy(){
-  //   const sortByMe = NewsStore.getSourceObj(this.props.params.source);
-  //   const sortLength = sortByMe.sortBy.length;
-  //   let sortByType = '';
-  //   if (sortLength > 1){
-  //     for (let i = 0; i < sortLength; i += 1) {
-  //       sortByType += `${sortByMe.sortBy[i]} `;
-  //     }
-  //   }
-  // }
   /**
    * Display the News
    * @return {jsx} The News Content

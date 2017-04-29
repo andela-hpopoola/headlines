@@ -3,9 +3,9 @@ import createHistory from 'history/createBrowserHistory';
 import GoogleLogin from 'react-google-login';
 import Storage from './../storage/localStorage';
 
-const history = createHistory({
-  forceRefresh: true,
-});
+// const history = createHistory({
+//   forceRefresh: true,
+// });
 
 // if (Storage.get('profile')) {
 //   history.push('/#/news');
@@ -31,7 +31,7 @@ class Login extends Component {
       console.log(JSON.parse(Storage.get('profile')));
       // this.setState({ profile: JSON.parse(localStorage.getItem('profile'))});
       history.push('/#/news');
-      window.location.reload();
+      global.window.location.reload();
     } else {
       // TODO: Process error message here
       console.log(profile);
@@ -44,7 +44,7 @@ class Login extends Component {
    */
   render() {
     return (
-      <div className="full">
+      <div className="login__page full">
         <div className="container">
           <div className="row">
             <div className="col-md-6 col-md-offset-3">

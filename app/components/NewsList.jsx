@@ -8,9 +8,12 @@ import NewsSingle from './NewsSingle.jsx';
  * @returns {jsx} the page navigation
  */
 const NewsList = (props) => {
-  const articles = props.articles.map(
-    (article, index) => <NewsSingle article={article} key={index}/>
-  );
+  let articles = [];
+  if (props.articles) {
+    articles = props.articles.map(
+      (article, index) => <NewsSingle article={article} key={index}/>
+    );
+  }
   return (
       <div className="row">
         { articles }

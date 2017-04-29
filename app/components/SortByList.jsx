@@ -8,13 +8,10 @@ import { Link } from 'react-router';
  * @returns {jsx} the page navigation
  */
 class SortByList extends Component {
-  constructor(props) {
-    super(props);
-  }
-  
   /**
    * Returns the value in the Search Field
-   * @param {function} e - event of the field
+   * @param {string} source - source of news
+   * @param {string} sortBy - sorting type
    * @return {string} Value in String Field
    */
   handleSort(source, sortBy) {

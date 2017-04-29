@@ -65,7 +65,7 @@ class News extends Component {
     });
 
   }
-  
+
   logChange(value) {
     this.setState({
       source: value.value,

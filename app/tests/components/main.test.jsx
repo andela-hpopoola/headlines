@@ -15,5 +15,11 @@ describe('Main Component', () => {
     const expected = 'div';
     expect(actual).toEqual(expected);
   });
+
+  it('has a class name of `container`', () => {
+    const actual = wrapper.node.props.className.includes('container');
+    const expected = true;
+    expect(actual).toEqual(expected);
+  });
 });
 

@@ -6,6 +6,7 @@ import NewsList from './NewsList.jsx';
 import NewsStore from '../stores/newsStore';
 import NewsActions from '../actions/newsActions';
 import SortByList from './SortByList.jsx';
+import Nav from './Nav.jsx';
 
 /**
  * Class to display news
@@ -118,6 +119,8 @@ class News extends Component {
   render() {
     return (
         <div>
+            {/* Navigation is placed here*/}
+            <Nav />
             <div className="page-header text-center">
               <h1>{ this.state.sourceName }</h1>
               <div className="lead">{ this.state.sourceDescription }</div>

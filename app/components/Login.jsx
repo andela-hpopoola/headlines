@@ -3,10 +3,6 @@ import createHistory from 'history/createBrowserHistory';
 import GoogleLogin from 'react-google-login';
 import Storage from './../storage/localStorage';
 
-// const history = createHistory({
-//   forceRefresh: true,
-// });
-
 // if (Storage.get('profile')) {
 //   history.push('/#/news');
 //   window.location.reload();
@@ -25,6 +21,10 @@ class Login extends Component {
    */
   responseFromGoogle(response) {
     const profile = response.profileObj;
+    const history = createHistory({
+      forceRefresh: true,
+    });
+
     // console.log(profile);
     if (profile) {
       Storage.set('profile', JSON.stringify(profile));

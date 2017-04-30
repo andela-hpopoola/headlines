@@ -10,9 +10,15 @@ describe('Nav Component', () => {
     expect(wrapper).toExist();
   });
 
-  it('should be a div item', () => {
+  it('should be a navigation item', () => {
     const actual = wrapper.type();
     const expected = 'nav';
+    expect(actual).toEqual(expected);
+  });
+
+  it('has a class name of `navbar`', () => {
+    const actual = wrapper.node.props.className.includes('navbar');
+    const expected = true;
     expect(actual).toEqual(expected);
   });
 });

@@ -3,6 +3,8 @@ import SourcesList from './SourcesList.jsx';
 import SearchForm from './SearchForm.jsx';
 import NewsStore from '../stores/newsStore';
 import NewsActions from '../actions/newsActions';
+import Nav from './Nav.jsx';
+
 
 /**
  * Class to display the Home Page
@@ -66,6 +68,7 @@ class Home extends Component {
   render() {
     return (
         <div>
+            <Nav />
             <h1 className="text-center">All Sources</h1>
             <SearchForm
               onChange={ this.searchSources.bind(this) }

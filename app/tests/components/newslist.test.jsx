@@ -33,5 +33,11 @@ describe('NewsList Component', () => {
     const expected = 'div';
     expect(actual).toEqual(expected);
   });
+
+  it('has a class name of `row`', () => {
+    const actual = wrapper.node.props.className.includes('row');
+    const expected = true;
+    expect(actual).toEqual(expected);
+  });
 });
 

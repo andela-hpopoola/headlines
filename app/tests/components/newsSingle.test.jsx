@@ -23,5 +23,11 @@ describe('NewsSingle Component', () => {
     const expected = 'div';
     expect(actual).toEqual(expected);
   });
+
+  it('have a class name of `col-sm-6`', () => {
+    const actual = wrapper.node.props.className.includes('col-sm-6');
+    const expected = true;
+    expect(actual).toEqual(expected);
+  });
 });
 

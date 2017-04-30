@@ -23,10 +23,10 @@ describe('SourcesList Component', () => {
     expect(actual).toEqual(expected);
   });
 
-  // it('has a class name of `login__page`', () => {
-  //   const actual = wrapper.node.props.className.includes('login__page');
-  //   const expected = true;
-  //   expect(actual).toEqual(expected);
-  // });
+  it('has a class name of `row`', () => {
+    const actual = wrapper.node.props.className.includes('row');
+    const expected = true;
+    expect(actual).toEqual(expected);
+  });
 });
 

@@ -18,7 +18,7 @@ describe('Home Component', () => {
   });
 
   it('should contain a top level header (h1)', () => {
-    const actual = childNode[0].type;
+    const actual = childNode[1].type;
     const expected = 'h1';
     expect(actual).toEqual(expected);
   });

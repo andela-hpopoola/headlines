@@ -23,7 +23,6 @@ const NewsSingle = (props) => {
               <hr />
               <div>
                 <p className="article__lower">
-                  <span>by </span>
                   <strong className="article__author">{ article.author }</strong>
                 </p>
               </div>

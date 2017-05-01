@@ -64,7 +64,6 @@ class News extends Component {
       sourceName: currentObj.sourceName,
       sourceDescription: currentObj.sourceDescription
     });
-
   }
 
   logChange(value) {
@@ -80,7 +79,7 @@ class News extends Component {
   }
 
   loadSortPage(source, sortBy) {
-    console.log('Load Sort Page Clicked ', source, sortBy);
+    // console.log('Load Sort Page Clicked ', source, sortBy);
     this.setState({
       source,
       sortBy
@@ -106,9 +105,8 @@ class News extends Component {
       const sortByType = singleSource.sortBy;
       if (sortLength > 1) {
         return { sortByType, sourceName, sourceDescription };
-      } else {
-        return { sortByType: [sortByType[0]], sourceName, sourceDescription }
       }
+      return { sortByType: [sortByType[0]], sourceName, sourceDescription };
     }
     return { sortByType: [], sourceName: 'no source Name', sourceDescription: 'no Description' };
   }
@@ -118,7 +116,7 @@ class News extends Component {
    */
   render() {
     return (
-        <div>
+        <div className="News__page">
             {/* Navigation is placed here*/}
             <Nav />
             <div className="page-header text-center">

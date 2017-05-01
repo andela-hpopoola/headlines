@@ -4,14 +4,13 @@ import Main from './Main.jsx';
 import Home from './Home.jsx';
 import Login from './Login.jsx';
 import News from './News.jsx';
-import Storage from './../storage/localStorage';
 
 /**
  * Check if the user is logged in
  * @return {boolean} the login status
  */
 const requireAuth = (nextState, replace) => {
-  if (!Storage.get('profile')) {
+  if (!localStorage.getItem('profile')) {
     replace({
       pathname: '/',
       state: { nextPathname: nextState.location.pathname }

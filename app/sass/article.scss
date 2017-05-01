@@ -55,6 +55,11 @@
 
     .article__author{
       letter-spacing: 0.5px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      display: inline-block;
+      overflow: hidden;
+      max-width: 250px;
     }
   }
 

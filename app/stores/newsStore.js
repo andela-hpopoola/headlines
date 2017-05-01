@@ -38,11 +38,11 @@ const NewsStore = Object.assign(EventEmitter.prototype, {
 
   getSourceObj(sourceId) {
     if (sources) {
-      console.log(sources, 'All Sources');
+      // console.log(sources, 'All Sources');
       const returnedSources = sources.filter(
         source => source.id === sourceId
       );
-      console.log(returnedSources[0], 'Returned Sources');
+      // console.log(returnedSources[0], 'Returned Sources');
       if (typeof returnedSources[0] !== 'undefined') {
         return {
           name: returnedSources[0].name,
@@ -70,7 +70,7 @@ const NewsStore = Object.assign(EventEmitter.prototype, {
 
       case ActionTypes.ALL_NEWS:
         news = action.articles;
-        console.log(news, 'these are the news');
+        // console.log(news, 'these are the news');
         break;
 
       case ActionTypes.SEARCH_SOURCES:

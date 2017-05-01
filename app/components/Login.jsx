@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 import createHistory from 'history/createBrowserHistory';
 import GoogleLogin from 'react-google-login';
-import Storage from './../storage/localStorage';
-
-// if (Storage.get('profile')) {
-//   history.push('/#/news');
-//   window.location.reload();
-// }
 
 /**
  * Class displaying Login Page
@@ -27,14 +21,15 @@ class Login extends Component {
 
     // console.log(profile);
     if (profile) {
-      Storage.set('profile', JSON.stringify(profile));
-      console.log(JSON.parse(Storage.get('profile')));
+      // Storage.set('profile', JSON.stringify(profile));
+      global.window.localStorage.setItem('profile', JSON.stringify(profile));
+      // console.log(JSON.parse(Storage.get('profile')));
       // this.setState({ profile: JSON.parse(localStorage.getItem('profile'))});
       history.push('/#/news');
       global.window.location.reload();
     } else {
       // TODO: Process error message here
-      console.log(profile);
+      // console.log(profile);
     }
   }
 

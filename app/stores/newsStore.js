@@ -45,6 +45,7 @@ const NewsStore = Object.assign(EventEmitter.prototype, {
       // console.log(returnedSources[0], 'Returned Sources');
       if (typeof returnedSources[0] !== 'undefined') {
         return {
+          id: sourceId,
           name: returnedSources[0].name,
           sortBy: returnedSources[0].sortBysAvailable,
           description: returnedSources[0].description,

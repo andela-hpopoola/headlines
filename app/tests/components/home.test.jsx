@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import expect from 'expect';
-import Home from '../../components/Home.jsx';
+import Home from './../../components/Home.jsx';
 
 describe('Home Component', () => {
   const wrapper = shallow(<Home />);

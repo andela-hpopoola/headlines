@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import expect from 'expect';
-import Main from '../../components/Main.jsx';
+import Main from './../../components/Main.jsx';
 
 describe('Main Component', () => {
   const wrapper = shallow(<Main />);

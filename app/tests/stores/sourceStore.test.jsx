@@ -1,7 +1,7 @@
 import expect from 'expect';
-import Dispatcher from '../../dispatcher/appDispatcher';
-import NewsStore from '../../stores/newsStore';
-import ActionTypes from '../../constants/actionTypes';
+import Dispatcher from './../../dispatcher/appDispatcher';
+import NewsStore from './../../stores/newsStore';
+import ActionTypes from './../../constants/actionTypes';
 
 describe('Source Store', () => {
   const sources = [

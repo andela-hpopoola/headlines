@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import expect from 'expect';
-import NewsSingle from '../../components/NewsSingle.jsx';
+import NewsSingle from './../../components/NewsSingle.jsx';
 
 describe('NewsSingle Component', () => {
   const article = {

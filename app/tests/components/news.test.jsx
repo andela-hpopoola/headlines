@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import expect from 'expect';
-import News from '../../components/News.jsx';
+import News from './../../components/News.jsx';
 
 describe('News Component', () => {
   const params = { source: 'cnn', sortby: 'top' };

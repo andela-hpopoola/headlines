@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import expect from 'expect';
-import SortByList from '../../components/SortByList.jsx';
+import SortByList from './../../components/SortByList.jsx';
 
 describe('SortByList Component', () => {
   const wrapper = shallow(<SortByList sort = {['top', 'latest']} sourceID = 'cnn' currentSort = 'latest' />);

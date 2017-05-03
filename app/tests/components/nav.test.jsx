@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import expect from 'expect';
-import Nav from '../../components/Nav.jsx';
+import Nav from './../../components/Nav.jsx';
 
 describe('Nav Component', () => {
   const wrapper = shallow(<Nav />);

@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import expect from 'expect';
-import Routes from '../../components/Routes.jsx';
+import Routes from './../../components/Routes.jsx';
 
 describe('Routes Component', () => {
   const wrapper = shallow(<Routes />);

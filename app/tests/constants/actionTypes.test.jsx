@@ -1,5 +1,5 @@
 import expect from 'expect';
-import ActionTypes from '../../constants/actionTypes.js';
+import ActionTypes from './../../constants/actionTypes';
 
 describe('ActionTypes Constant', () => {
   it('should exists', () => {

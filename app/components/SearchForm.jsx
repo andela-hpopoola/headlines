@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import SourcesList from './SourcesList.jsx';
 
 /**
  * Class displaying the Search Form
@@ -25,7 +24,11 @@ class SearchForm extends Component {
     return (
       <div className="row search">
         <form className="col-md-6 col-md-offset-3">
-          <input className="form-control search__input" onChange={this.handleSearch.bind(this)} placeholder="Search for a News Source" />
+          <input
+            className="form-control search__input"
+            onChange={this.handleSearch.bind(this)}
+            placeholder="Search for a News Source"
+          />
         </form>
       </div>
     );

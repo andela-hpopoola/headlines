@@ -18,6 +18,10 @@ class SortByList extends Component {
     this.props.onClick(source, sortBy);
   }
 
+  /**
+   * Display the News
+   * @return {jsx} The News Content
+   */
   render() {
     const currentSort = this.props.currentSort;
     let showSortText = false;

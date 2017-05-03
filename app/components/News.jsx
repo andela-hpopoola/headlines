@@ -57,7 +57,7 @@ class News extends Component {
    */
   onChange() {
     const currentSourceObj = NewsStore.getSourceObj(this.state.source);
-    console.log(currentSourceObj, 'current soruce');
+    // console.log(currentSourceObj, 'current soruce');
     this.setState({
       articles: NewsStore.getNews(this.state.source, this.state.sortBy) || [],
       sourceObj: NewsStore.getSourceObj(this.state.source) || [],
@@ -69,11 +69,16 @@ class News extends Component {
     });
   }
 
+  /**
+   * The method that for handling change
+   * @param {string} value - the selected value from select field
+   * @return {object} sets the state based on value
+   */
   logChange(value) {
-    console.log(value.value);
+    // console.log(value.value);
     // get the object
     const selectedSourceObj = NewsStore.getSourceObj(value.value);
-    console.log(selectedSourceObj,'selected when logchange');
+    // console.log(selectedSourceObj,'selected when logchange');
     const selectedSortedBy = selectedSourceObj.sortBy ? selectedSourceObj.sortBy[0].toString() : 'none - ';
     this.setState({
       source: value.value,
@@ -83,6 +88,10 @@ class News extends Component {
     });
   }
 
+  /**
+   * The method that for handling change
+   * @return {object} get the news based on selected source
+   */
   loadPage() {
     // const sortByDefaultArray = this.state.selectedSourceObj.sortBy.split(',');
     // const sortByDefault = sortByDefaultArray[0].join('');
@@ -90,6 +99,12 @@ class News extends Component {
     // NewsActions.getNews(this.state.selectedSourceObj.id, sortByDefault);
   }
 
+  /**
+   * The method that for handling change
+   * @param {string} source - the source you wish to load
+   * @param {string} sortBy - the sorting criterion
+   * @return {object} sets the state based on value
+   */
   loadSortPage(source, sortBy) {
     // console.log('Load Sort Page Clicked ', source, sortBy);
     this.setState({
@@ -99,6 +114,11 @@ class News extends Component {
     NewsActions.getNews(source, sortBy);
   }
 
+  /**
+   * The method is used to reformat sources for the select field
+   * @param {string} sources - get the sources to redefine
+   * @return {object} sets the state based on sources
+   */
   selectSources(sources) {
     return sources.map(source => ({
       value: source.id,
@@ -112,7 +132,7 @@ class News extends Component {
    * @return {jsx} The News Content
    */
   render() {
-    console.log(this.state.selectedSortedBy, 'selected source in render');
+    // console.log(this.state.selectedSortedBy, 'selected source in render');
     return (
         <div className="News__page">
             {/* Navigation is placed here*/}

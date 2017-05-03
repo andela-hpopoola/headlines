@@ -8,10 +8,12 @@ import News from './News.jsx';
 
 /**
  * Check if the user is logged in
+ * @param {string} nextState the next state to load
+ * @param {string} replace the page to replace
  * @return {boolean} the login status
  */
 const requireAuth = (nextState, replace) => {
-  if (!localStorage.getItem('profile')) {
+  if (!global.window.localStorage.getItem('profile')) {
     replace({
       pathname: '/',
       state: { nextPathname: nextState.location.pathname }

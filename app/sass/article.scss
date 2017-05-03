@@ -59,6 +59,7 @@
       text-overflow: ellipsis;
       display: inline-block;
       overflow: hidden;
+      height: 20px;
       max-width: 250px;
     }
   }
@@ -71,8 +72,8 @@
       text-decoration: none;
     }
 
-    .article__body, .article__lower{
-      color: #446cb3;
+    .article__body, .article__lower, .article__title{
+      color: #CF000F;
     }
   }
   

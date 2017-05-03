@@ -136,9 +136,9 @@ class News extends Component {
             </div>
 
             <div className="col-sm-4">
-              <div className="widget">
+              <div className="widget thumbnail">
 
-                <h3>All Sources</h3>
+                <h3>Select Source</h3>
                 <Select
                   name="get_sources_select"
                   value={this.state.selectedSourceObj.id}
@@ -146,18 +146,25 @@ class News extends Component {
                   onChange={ this.logChange.bind(this) }
                   clearableValue= {true}
                 />
-                <div className="text-danger">
-                  This is the current object
+
+                {/* Is there a description to show */}
+                { Object.keys(this.state.selectedSourceObj).length !== 0 ?
+                <div className="description__text">
                   { this.state.selectedSourceObj.description }
+
+                  <div className="description__button">
+                    <Link
+                      to={`news/${this.state.source}/${this.state.selectedSortedBy}`}
+                      className="btn btn-primary"
+                      onClick={ this.loadPage.bind(this) }>
+                      View {this.state.selectedSourceObj.name }
+                    </Link>
+                  </div>
                 </div>
-
-                <Link to={`news/${this.state.source}/${this.state.selectedSortedBy}`} className="btn btn-primary" onClick={ this.loadPage.bind(this) }>
-                  View {this.state.selectedSourceObj.name } News
-                </Link>
+                : ''
+                 }
               </div>
 
-              <div className="widget">
-              </div>
             </div>
         </div>
     );

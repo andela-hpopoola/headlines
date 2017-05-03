@@ -25,7 +25,7 @@ class SearchForm extends Component {
     return (
       <div className="row search">
         <form className="col-md-6 col-md-offset-3">
-          <input className="form-control search__input" onChange={this.handleSearch.bind(this)} />
+          <input className="form-control search__input" onChange={this.handleSearch.bind(this)} placeholder="Search for a News Source" />
         </form>
       </div>
     );

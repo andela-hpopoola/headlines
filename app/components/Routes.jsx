@@ -3,6 +3,7 @@ import { Route, Router, hashHistory, IndexRoute } from 'react-router';
 import Main from './Main.jsx';
 import Home from './Home.jsx';
 import Login from './Login.jsx';
+import Logout from './Logout.jsx';
 import News from './News.jsx';
 
 /**
@@ -35,8 +36,7 @@ class Routes extends Component {
           <IndexRoute component={Login} />
           <Route path="news/:source/:sortby" component={News} onEnter={ requireAuth } />
           <Route path="news" component={Home} onEnter={ requireAuth } />
-          {/*<Route path="logout" component={Logout} />*/}
-          {/*<Route path="news" component={News} />*/}
+          <Route path="logout" component={Logout} />
         </Route>
       </Router>
     );

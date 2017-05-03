@@ -1,0 +1,25 @@
+.widget {
+ background: white;
+ padding: 30px;
+ border-radius: 0;
+
+  h3{
+    margin-top: 0;
+    font-size: 16px;
+  }
+
+  .description__text{
+    color: #666;
+    padding: 15px 0 15px;
+    font-size: 13px;
+  }
+
+  .description__button{
+    padding-top: 15px;
+    .btn{
+      border-radius: 0;
+    }
+
+  }
+
+}

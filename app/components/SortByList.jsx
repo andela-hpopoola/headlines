@@ -21,7 +21,7 @@ class SortByList extends Component {
   render() {
     const currentSort = this.props.currentSort;
     let showSortText = false;
-    if (this.props.sort.length >= 1){
+    if (this.props.sort.length > 1) {
       showSortText = true;
     }
     const listOfSort = this.props.sort.map(
@@ -38,12 +38,11 @@ class SortByList extends Component {
     );
     return (
       <div className="btn-group" role="group" aria-label="Sort Articles">
-        { listOfSort }
-        { showSortText ?
-        <div className="sorting__current">
+        {/* Show sort text if there are more than one category */}
+        { showSortText ? listOfSort : ' ' }
+        <div className="sorting__text">
           Currently viewing { currentSort } news
         </div>
-        : ' ' }
       </div>
     );
   }

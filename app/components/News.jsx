@@ -6,6 +6,7 @@ import NewsList from './NewsList.jsx';
 import NewsStore from '../stores/newsStore';
 import NewsActions from '../actions/newsActions';
 import SortByList from './SortByList.jsx';
+import SourcesByType from './SourcesByType.jsx';
 import Nav from './Nav.jsx';
 
 /**
@@ -105,6 +106,7 @@ class News extends Component {
    * @return {jsx} The News Content
    */
   render() {
+    console.log(NewsStore.selectSourcesByCategory());
     const selectOptions = NewsStore.selectSources();
     return (
         <div className="News__page row">
@@ -163,7 +165,7 @@ class News extends Component {
                 : ''
                  }
               </div>
-
+              <SourcesByType sourcesObj = {NewsStore.selectSourcesByCategory()} />
             </div>
         </div>
     );

@@ -1238,20 +1238,17 @@ const sources =    [{
    * @param {string} sources - get the sources to redefine
    * @return {object} sets the state based on sources
    */
-  selectSourcesByCategory() {
     let sourceObj = {};
-    for (source in sources){
+    sources.forEach(function(source){
       console.log(source);
-      if (sourceObj[sources[source].category] !== undefined){
-        sourceObj[sources[source].category].push(sources[source].name);
-      } else {
-        sourceObj[sources[source].category] = [];
-        sourceObj[sources[source].category].push(sources[source].name);
-      }
-    };
-  },
+        if (sourceObj[source.category] !== undefined){
+          sourceObj[source.category].push(source.name);
+        } else {
+          sourceObj[source.category] = [];
+          sourceObj[source.category].push(source.name);
+        }
+    });
 
-  console.log(sourceObj);
 
   // Object.keys(sourceObj).map(function(key, index) {
   //   console.log(key);

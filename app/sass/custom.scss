@@ -1,0 +1,52 @@
+body{
+  background: #f8f8f8;
+  margin-top: 80px;
+}
+
+.navbar-nav > li > a {
+  color: #232323;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+  transition: 0.2s linear;
+  -webkit-transition: 0.2s linear;
+  -moz-transition: 0.2s linear;
+}
+
+.full {  
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-size: cover !important;
+  background-position: 50% 50% !important;
+  z-index: 0;
+  transition: 0.3s linear;
+  -webkit-transition: 0.3s linear;
+  -moz-transition: 0.3s linear;
+  background: #232323;
+}
+
+.login{
+  color: white;
+  margin-top: 33vh;
+  text-align: center;
+}
+
+.search{
+  margin: 30px 0;
+
+  .search__input{
+    height: 45px;
+    border-radius: 0;
+  }
+}
+
+.sorting__text{
+  font-size: 16px;
+  font-style: italic;    
+  color: #666;
+  clear: both;
+  padding: 10px 0;
+}

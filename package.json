@@ -1,0 +1,86 @@
+{
+  "name": "headlines",
+  "version": "1.0.0",
+  "description": "A simple a front-end application that takes advantage of the functionalities NewsAPI provides.",
+  "main": "server.js",
+  "scripts": {
+    "test": "NODE_ENV=test nyc mocha --compilers js:babel-core/register ./app/tests/**/*.test.jsx",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "start": "node server.js"
+  },
+  "nyc": {
+    "require": [
+      "babel-register"
+    ],
+    "exclude": [
+      "**/*.test.jsx",
+      "public"
+    ],
+    "extension": [
+      ".jsx",
+      ".es6"
+    ],
+    "sourceMap": false,
+    "instrument": false
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andela-hpopoola/headlines.git"
+  },
+  "keywords": [
+    "headlines",
+    "andela",
+    "checkpoint",
+    "news",
+    "api"
+  ],
+  "author": "Haruna Popoola",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andela-hpopoola/headlines/issues"
+  },
+  "homepage": "https://github.com/andela-hpopoola/headlines#readme",
+  "devDependencies": {
+    "babel-core": "^6.5.1",
+    "babel-loader": "^6.2.2",
+    "babel-plugin-istanbul": "^4.1.3",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "bootstrap-sass": "^3.3.7",
+    "coveralls": "^2.13.1",
+    "create-react-class": "^15.5.2",
+    "css-loader": "^0.23.1",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.1.3",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-react": "^6.10.3",
+    "node-sass": "^3.4.2",
+    "nyc": "^10.3.0",
+    "react-addons-test-utils": "^0.14.8",
+    "sass-loader": "^3.1.2",
+    "script-loader": "^0.6.1",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.13"
+  },
+  "dependencies": {
+    "chai": "^3.5.0",
+    "enzyme": "^2.8.2",
+    "expect": "^1.20.2",
+    "expect-jsx": "^2.6.0",
+    "express": "^4.13.4",
+    "flux": "^2.1.1",
+    "history": "^4.6.1",
+    "jquery": "^2.2.1",
+    "mocha": "^3.3.0",
+    "prop-types": "^15.5.8",
+    "react": "^0.14.8",
+    "react-addons-test-utils": "^0.14.8",
+    "react-dom": "^0.14.8",
+    "react-google-login": "^2.8.9",
+    "react-router": "^2.8.1",
+    "react-select": "^1.0.0-rc.3",
+    "sinon": "^2.2.0",
+    "superagent": "^3.5.2"
+  }
+}

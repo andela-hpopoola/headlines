@@ -1,0 +1,43 @@
+
+.sources__box{
+  position: relative;
+  display: block;
+  overflow: hidden;
+  text-decoration: none;
+  height: 180px;
+  max-height: 180px;
+  margin-bottom: 30px;
+  padding: 30px;
+  transition: all .5s ease;
+  color: #fff;
+  background: #446cb3;
+  transition: 0.4s ease;
+  -webkit-transition: 0.4s ease;
+  -moz-transition: 0.4s ease;
+
+  &:hover{
+    background: #CF000F;
+
+    a {
+      text-decoration: none;
+      height: 190px;
+    }
+  }
+
+  h3{
+    font-size: 1.5em;
+    font-weight: 300;
+    margin: 0;
+    padding-top: 60px;
+    color: #fff;
+  }
+  span{
+    font-size: 1em;
+    font-weight: 300;
+
+    &.number{
+      float:right;
+      opacity: 0.3;
+    }
+  }
+}

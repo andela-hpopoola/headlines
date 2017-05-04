@@ -80,6 +80,7 @@
     "react-google-login": "^2.8.9",
     "react-router": "^2.8.1",
     "react-select": "^1.0.0-rc.3",
+    "react-share": "^1.13.2",
     "sinon": "^2.2.0",
     "superagent": "^3.5.2"
   }

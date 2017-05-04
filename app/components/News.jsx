@@ -107,16 +107,21 @@ class News extends Component {
   render() {
     const selectOptions = NewsStore.selectSources();
     return (
-        <div className="News__page">
+        <div className="News__page row">
             <Nav />
             <div className="page-header text-center">
               <h1>{ this.state.currentSourceObj.name }</h1>
-              <div className="lead">{ this.state.currentSourceObj.description }</div>
-                <SortByList
+              <div className="row">
+                <div className="lead col-sm-offset-2 col-sm-8">
+                  { this.state.currentSourceObj.description }
+                </div>
+              </div>
+              <SortByList
                 sort = { this.state.currentSourceObj.sortBy || [] }
                 sourceID = { this.state.source }
                 currentSort = { this.state.sortBy }
-                onClick={ this.loadSortPage.bind(this) } />
+                onClick={ this.loadSortPage.bind(this) }
+              />
             </div>
 
             <div className="col-sm-8">

@@ -38,7 +38,6 @@ describe('News Store', () => {
       publishedAt: '2017-04-30T06:15:37Z'
     }];
 
-
   it('should exists', () => {
     expect(NewsStore).toExist();
   });

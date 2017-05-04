@@ -1,9 +1,9 @@
-// import React from 'react';
-// import { shallow } from 'enzyme';
 import expect from 'expect';
-// import TestUtils from 'react-addons-test-utils';
 import expectJSX from 'expect-jsx';
+import sinon from 'sinon';
 import NewsActions from './../../actions/newsActions';
+import Dispatcher from './../../dispatcher/appDispatcher';
+
 
 expect.extend(expectJSX);
 
@@ -12,8 +12,19 @@ describe('News Action', () => {
     expect(NewsActions).toExist();
   });
 
-  // it('should get all sources', () => {
-  //   expect(NewsActions.getAllSources()).toExist();
-  // });
+  it('should get all Sources', () => {
+    NewsActions.getAllSources();
+    expect(NewsActions.getAllSources).toExist();
+  });
+
+  it('should get all News', () => {
+    NewsActions.getNews();
+    expect(NewsActions.getNews).toExist();
+  });
+
+  it('should search for all Sources', () => {
+    NewsActions.searchSources('bbc');
+    expect(NewsActions.searchSources).toExist();
+  });
 });
 

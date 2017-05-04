@@ -1,6 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
 import expect from 'expect';
+import { shallow } from 'enzyme';
 import Home from './../../components/Home.jsx';
 
 describe('Home Component', () => {

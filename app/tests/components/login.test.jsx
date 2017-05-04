@@ -1,6 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
 import expect from 'expect';
+import { shallow } from 'enzyme';
 import Login from './../../components/Login.jsx';
 
 describe('Login Component', () => {

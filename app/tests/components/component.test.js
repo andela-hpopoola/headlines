@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import expectJSX from 'expect-jsx';
 import expect from 'expect';
 import TestUtils from 'react-addons-test-utils';
-import expectJSX from 'expect-jsx';
 import Alert from '../../components/Alert.jsx';
 
 expect.extend(expectJSX);

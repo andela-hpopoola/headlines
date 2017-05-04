@@ -22,8 +22,8 @@ class News extends Component {
     super(props);
     this.state = {
       articles: [],
-      sortBy: this.props.params.sortby,
-      source: this.props.params.source,
+      sortBy: this.props.params.sortby || '',
+      source: this.props.params.source || '',
       sources: [],
       selectedSourceObj: {},
       currentSourceObj: {},
@@ -38,7 +38,6 @@ class News extends Component {
    */
   componentDidMount() {
     NewsStore.addChangeListener(this.onChange);
-    // TODO: CHECK IF COMPONENT IS MOUNTED§
     NewsActions.getNews(this.props.params.source, this.props.params.sortby);
     NewsActions.getAllSources();
   }
@@ -57,15 +56,11 @@ class News extends Component {
    */
   onChange() {
     const currentSourceObj = NewsStore.getSourceObj(this.state.source);
-    // console.log(currentSourceObj, 'current soruce');
     this.setState({
       articles: NewsStore.getNews(this.state.source, this.state.sortBy) || [],
       sourceObj: NewsStore.getSourceObj(this.state.source) || [],
       sources: NewsStore.getAllSources() || [],
-      currentSourceObj,
-      // sortByType: currentSourceObj.sortByType,
-      // sourceName: currentSourceObj.sourceName,
-      // sourceDescription: currentSourceObj.sourceDescription
+      currentSourceObj
     });
   }
 
@@ -75,10 +70,8 @@ class News extends Component {
    * @return {object} sets the state based on value
    */
   logChange(value) {
-    // console.log(value.value);
     // get the object
     const selectedSourceObj = NewsStore.getSourceObj(value.value);
-    // console.log(selectedSourceObj,'selected when logchange');
     const selectedSortedBy = selectedSourceObj.sortBy ? selectedSourceObj.sortBy[0].toString() : 'none - ';
     this.setState({
       source: value.value,
@@ -91,12 +84,9 @@ class News extends Component {
   /**
    * The method that for handling change
    * @return {object} get the news based on selected source
-   */
+  */
   loadPage() {
-    // const sortByDefaultArray = this.state.selectedSourceObj.sortBy.split(',');
-    // const sortByDefault = sortByDefaultArray[0].join('');
     NewsActions.getNews(this.state.selectedSourceObj.id, 'top');
-    // NewsActions.getNews(this.state.selectedSourceObj.id, sortByDefault);
   }
 
   /**
@@ -106,25 +96,8 @@ class News extends Component {
    * @return {object} sets the state based on value
    */
   loadSortPage(source, sortBy) {
-    // console.log('Load Sort Page Clicked ', source, sortBy);
-    this.setState({
-      source,
-      sortBy
-    });
+    this.setState({ source, sortBy });
     NewsActions.getNews(source, sortBy);
-  }
-
-  /**
-   * The method is used to reformat sources for the select field
-   * @param {string} sources - get the sources to redefine
-   * @return {object} sets the state based on sources
-   */
-  selectSources(sources) {
-    return sources.map(source => ({
-      value: source.id,
-      label: source.name,
-      clearableValue: true
-    }));
   }
 
   /**
@@ -132,10 +105,9 @@ class News extends Component {
    * @return {jsx} The News Content
    */
   render() {
-    // console.log(this.state.selectedSortedBy, 'selected source in render');
+    const selectOptions = NewsStore.selectSources();
     return (
         <div className="News__page">
-            {/* Navigation is placed here*/}
             <Nav />
             <div className="page-header text-center">
               <h1>{ this.state.currentSourceObj.name }</h1>
@@ -162,14 +134,16 @@ class News extends Component {
                 <Select
                   name="get_sources_select"
                   value={this.state.selectedSourceObj.id}
-                  options={ this.selectSources(this.state.sources) }
+                  options={ selectOptions }
                   onChange={ this.logChange.bind(this) }
                   clearableValue= {true}
                 />
 
-                {/* Is there a description to show */}
+                {/* If there a description to show */}
                 { Object.keys(this.state.selectedSourceObj).length !== 0 ?
                 <div className="description__text">
+
+                  <h5>{ this.state.selectedSourceObj.name }</h5>
                   { this.state.selectedSourceObj.description }
 
                   <div className="description__button">

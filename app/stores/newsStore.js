@@ -27,8 +27,6 @@ const NewsStore = Object.assign(EventEmitter.prototype, {
   },
 
   getAllSources() {
-    // console.log(sources,'In get all sources');
-    // sources = NewsApi.getAllSources();
     return sources;
   },
 
@@ -38,11 +36,9 @@ const NewsStore = Object.assign(EventEmitter.prototype, {
 
   getSourceObj(sourceId) {
     if (sources) {
-      // console.log(sources, 'All Sources');
       const returnedSources = sources.filter(
         source => source.id === sourceId
       );
-      // console.log(returnedSources[0], 'Returned Sources');
       if (typeof returnedSources[0] !== 'undefined') {
         return {
           id: sourceId,
@@ -62,6 +58,19 @@ const NewsStore = Object.assign(EventEmitter.prototype, {
     );
   },
 
+  /**
+   * The method is used to reformat sources for the select field
+   * @param {string} sources - get the sources to redefine
+   * @return {object} sets the state based on sources
+   */
+  selectSources() {
+    return sources.map(source => ({
+      value: source.id,
+      label: source.name,
+      clearableValue: true
+    }));
+  },
+
 
   dispatcherIndex: Dispatcher.register((action) => {
     switch (action.actionType) {
@@ -71,7 +80,6 @@ const NewsStore = Object.assign(EventEmitter.prototype, {
 
       case ActionTypes.ALL_NEWS:
         news = action.articles;
-        // console.log(news, 'these are the news');
         break;
 
       case ActionTypes.SEARCH_SOURCES:
@@ -79,7 +87,7 @@ const NewsStore = Object.assign(EventEmitter.prototype, {
         break;
 
       default:
-      // no op
+      // no operation
     }
     NewsStore.emitChange();
   })

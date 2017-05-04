@@ -50,6 +50,12 @@ describe('Source Store', () => {
     expect(actual.length).toEqual(expected);
   });
 
+  it('should reformat sources for select form field', () => {
+    const actual = NewsStore.selectSources();
+    const expected = 6;
+    expect(actual.length).toEqual(expected);
+  });
+
   it('should return all sources when needed', () => {
     const actual = NewsStore.getAllSources();
     const expected = sources;

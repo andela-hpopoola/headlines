@@ -1,37 +1,38 @@
 import React, { Component } from 'react';
 import createHistory from 'history/createBrowserHistory';
+import Nav from './Nav.jsx';
+
+/**
+ * Log the user out when visited
+ * @return {null} redirects user to login page
+ */
+const logOut = () => {
+  const history = createHistory({ forceRefresh: true });
+  if (global.window.localStorage.getItem('profile')) {
+    global.window.localStorage.removeItem('profile');
+    history.push('/#/');
+    global.window.location.reload();
+  }
+};
 
 /**
  * Class displaying Logout Page
  * @extends React.Component
  */
 class Logout extends Component {
-
-  /**
-   * Log the user out when visited
-   * @return {null} redirects user to login page
-   */
-  componentWillMount() {
-    const history = createHistory({
-      forceRefresh: true,
-    });
-
-    this.setState({
-      status: 'Logging out'
-    });
-
-    global.window.localStorage.removeItem('profile');
-    history.push('/#/');
-    global.window.location.reload();
-  }
-
-
   /**
    * Show the Logout Component
    * @return {jsx} Show the Logout component
    */
   render() {
-    return (<h1> { this.state.status } </h1>);
+    this.name = 'Logging Out';
+    logOut();
+    return (
+      <div>
+        <Nav />
+        <h1> Logging Out </h1>
+      </div>
+    );
   }
 }
 

@@ -73,8 +73,23 @@
     }
 
     .article__body, .article__lower, .article__title{
-      color: #CF000F;
+      color: #b91521;
     }
   }
+
+
+.btn-read-more {
+  height: 32px;
+  border-radius: 0;
+  font-size: 11px;
+  line-height: 18px;
+  color: #666;
+
+  &:hover{
+    background: #b91521;
+    color: white;
+    border: red;
+  }
+}
   
 }

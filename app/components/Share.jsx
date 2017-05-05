@@ -5,7 +5,6 @@ import {
   generateShareIcon,
 } from 'react-share';
 
-
 const {
   FacebookShareButton,
   GooglePlusShareButton,

@@ -9,7 +9,7 @@ class Alert extends Component {
 
   /**
    * Displays Alert Message.
-   * @return {string} Alert Message.
+   * @return {string} this.getAlert().
    */
   getAlert() {
     if ((this.props.message !== undefined) && (this.props.message.length > 0)) {

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   ShareButtons,
-  ShareCounts,
   generateShareIcon,
 } from 'react-share';
-
 
 const {
   FacebookShareButton,
@@ -18,10 +17,25 @@ const TwitterIcon = generateShareIcon('twitter');
 const GooglePlusIcon = generateShareIcon('google');
 const LinkedinIcon = generateShareIcon('linkedin');
 
+/**
+ * Class to display news
+ * @extends React.Component
+ */
 class Share extends Component {
-    constructor(props){
-        super(props);
-    }
+
+  /**
+   * Set the Initial conditions for sharing the News
+   * @param {object} props - The property of the Share Class
+   */
+  constructor(props) {
+    super(props);
+    this.props = props;
+  }
+
+  /**
+   * Display the News Share
+   * @return {jsx} The News Share Logo
+   */
   render() {
     const shareUrl = this.props.url;
     const title = this.props.title;
@@ -74,5 +88,13 @@ class Share extends Component {
     );
   }
 }
+/**
+ * Set the PropTypes for Share
+ */
+Share.propTypes = {
+  params: PropTypes.object,
+  url: PropTypes.string,
+  title: PropTypes.string,
+};
 
 export default Share;

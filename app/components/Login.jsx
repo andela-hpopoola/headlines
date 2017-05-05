@@ -28,8 +28,9 @@ class Login extends Component {
    * @return {jsx} Show the login component
    */
   render() {
+    this.bgImage = { backgroundImage: 'url(./bg.jpg)' };
     return (
-      <div className="login__page full">
+      <div className="login__page full" style={ this.bgImage }>
         <div className="container">
           <div className="row">
             <div className="col-md-6 col-md-offset-3">
@@ -38,7 +39,7 @@ class Login extends Component {
                 <p className="lead">Get News from over 70 Sources</p>
                 <GoogleLogin
                   clientId="85385577141-0nb9rf764mh1eetjmd8p5jjmthr8e8hq.apps.googleusercontent.com"
-                  buttonText="Login"
+                  buttonText="Login with Google"
                   onSuccess={responseFromGoogle}
                   onFailure={responseFromGoogle}
                 />

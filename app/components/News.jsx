@@ -6,6 +6,7 @@ import NewsList from './NewsList.jsx';
 import NewsStore from '../stores/newsStore';
 import NewsActions from '../actions/newsActions';
 import SortByList from './SortByList.jsx';
+import SourcesByType from './SourcesByType.jsx';
 import Nav from './Nav.jsx';
 
 /**
@@ -82,11 +83,15 @@ class News extends Component {
   }
 
   /**
-   * The method that for handling change
+   * This loads the page in the application
+   * @param {string} source - the source of news to load
+   * @param {string} sortby - the sorting criterion
    * @return {object} get the news based on selected source
   */
-  loadPage() {
-    NewsActions.getNews(this.state.selectedSourceObj.id, 'top');
+  loadPage(source, sortby) {
+    const currentSourceObj = NewsStore.getSourceObj(source);
+    this.setState({ currentSourceObj, source, selectedSourceObj: currentSourceObj });
+    NewsActions.getNews(source, sortby);
   }
 
   /**
@@ -141,7 +146,7 @@ class News extends Component {
                   value={this.state.selectedSourceObj.id}
                   options={ selectOptions }
                   onChange={ this.logChange.bind(this) }
-                  clearableValue= {true}
+                  clearableValue= {false}
                 />
 
                 {/* If there a description to show */}
@@ -155,7 +160,11 @@ class News extends Component {
                     <Link
                       to={`news/${this.state.source}/${this.state.selectedSortedBy}`}
                       className="btn btn-primary"
-                      onClick={ this.loadPage.bind(this) }>
+                      onClick= {
+                        this.loadPage.bind(
+                          this, this.state.source, this.state.selectedSortedBy
+                        )
+                      } >
                       View {this.state.selectedSourceObj.name }
                     </Link>
                   </div>
@@ -163,7 +172,10 @@ class News extends Component {
                 : ''
                  }
               </div>
-
+              <SourcesByType
+                sourcesObj = {NewsStore.selectSourcesByCategory()}
+                onClick={ this.loadPage.bind(this) }
+              />
             </div>
         </div>
     );

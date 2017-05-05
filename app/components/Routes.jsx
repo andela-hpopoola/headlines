@@ -32,6 +32,7 @@ class Routes extends Component {
    * @return {Page} the routes of the page
    */
   render() {
+    this.name = 'Router';
     return (
       <Router history={hashHistory}>
         <Route path="/" component={Main}>

@@ -72,6 +72,24 @@ const NewsStore = Object.assign(EventEmitter.prototype, {
   },
 
 
+  /**
+   * The method is used to reformat sources for the select field
+   * @param {string} sources - get the sources to redefine
+   * @return {object} sets the state based on sources
+   */
+  selectSourcesByCategory() {
+    const sourceObj = {};
+    sources.forEach((source) => {
+      if (sourceObj[source.category] !== undefined) {
+        sourceObj[source.category].push(`${source.id}_${source.name}_${source.sortBysAvailable[0]}`);
+      } else {
+        sourceObj[source.category] = [];
+        sourceObj[source.category].push(`${source.id}_${source.name}_${source.sortBysAvailable[0]}`);
+      }
+    });
+    return sourceObj;
+  },
+
   dispatcherIndex: Dispatcher.register((action) => {
     switch (action.actionType) {
       case ActionTypes.ALL_SOURCES:

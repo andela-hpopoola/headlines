@@ -76,6 +76,7 @@
     "prop-types": "^15.5.8",
     "react": "^0.14.8",
     "react-addons-test-utils": "^0.14.8",
+    "react-collapsible": "^1.4.0",
     "react-dom": "^0.14.8",
     "react-google-login": "^2.8.9",
     "react-router": "^2.8.1",

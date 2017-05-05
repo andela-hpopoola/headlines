@@ -19,11 +19,17 @@ class SourcesByType extends Component {
     this.props.onClick(source, sortBy);
   }
 
+  /**
+   * Returns the sources sorted by categories
+   * @param {string} sourcesObj - source of news to sort
+   * @return {object} The sorted sources by category
+   */
   output(sourcesObj) {
     return Object.keys(sourcesObj).map((key) => {
-      const body = sourcesObj[key].map((source) => {
+      const body = sourcesObj[key].map((source, index) => {
         const [linkID, linkSource, linkSortBy] = source.split('_');
         return <Link
+          key={index}
           className="Collapsible__link"
           to={`news/${linkID}/${linkSortBy}`}
           onClick={this.loadPage.bind(this, linkID, linkSortBy)}
@@ -38,6 +44,10 @@ class SourcesByType extends Component {
     });
   }
 
+  /**
+   * Display the sorted sources
+   * @return {jsx} The Sorted Sources
+   */
   render() {
     return (
         <div className="widget thumbnail Collapsible">

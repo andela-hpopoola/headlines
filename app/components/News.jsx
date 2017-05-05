@@ -110,7 +110,6 @@ class News extends Component {
    * @return {jsx} The News Content
    */
   render() {
-    console.log(this.state.currentSourceObj);
     const selectOptions = NewsStore.selectSources();
     return (
         <div className="News__page row">
@@ -161,7 +160,11 @@ class News extends Component {
                     <Link
                       to={`news/${this.state.source}/${this.state.selectedSortedBy}`}
                       className="btn btn-primary"
-                      onClick={ this.loadPage.bind(this, this.state.source, this.state.selectedSortedBy) } >
+                      onClick= {
+                        this.loadPage.bind(
+                          this, this.state.source, this.state.selectedSortedBy
+                        )
+                      } >
                       View {this.state.selectedSourceObj.name }
                     </Link>
                   </div>

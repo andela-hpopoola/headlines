@@ -5,17 +5,17 @@ import ActionTypes from './../../constants/actionTypes';
 
 describe('Source Store', () => {
   const sources = [
-    { id: 'abc-news-au', name: 'ABC News (AU)', category: 'general' },
-    { id: 'al-jazeera-english', name: 'Al Jazeera English', category: 'general' },
-    { id: 'ars-technica', name: 'Ars Technica', category: 'technology' },
-    { id: 'associated-press', name: 'Associated Press', category: 'general' },
-    { id: 'bbc-news', name: 'BBC News', category: 'general' },
-    { id: 'bbc-sport', name: 'BBC Sport', category: 'sport' },
+    { id: 'abc-news-au', name: 'ABC News (AU)', category: 'general', sortBysAvailable: ['top'] },
+    { id: 'al-jazeera-english', name: 'Al Jazeera English', category: 'general', sortBysAvailable: ['top'] },
+    { id: 'ars-technica', name: 'Ars Technica', category: 'technology', sortBysAvailable: ['top'] },
+    { id: 'associated-press', name: 'Associated Press', category: 'general', sortBysAvailable: ['top'] },
+    { id: 'bbc-news', name: 'BBC News', category: 'general', sortBysAvailable: ['top'] },
+    { id: 'bbc-sport', name: 'BBC Sport', category: 'sport', sortBysAvailable: ['top'] },
   ];
 
   const filteredSources = [
-    { id: 'bbc-news', name: 'BBC News', category: 'general' },
-    { id: 'bbc-sport', name: 'BBC Sport', category: 'sport' },
+    { id: 'bbc-news', name: 'BBC News', category: 'general', sortBysAvailable: ['top'] },
+    { id: 'bbc-sport', name: 'BBC Sport', category: 'sport', sortBysAvailable: ['top'] },
   ];
 
   it('should exists', () => {
@@ -36,6 +36,12 @@ describe('Source Store', () => {
     const actual = NewsStore.getAllSources();
     const expected = sources;
     expect(actual).toEqual(expected);
+  });
+
+  it('should get source object by category', () => {
+    const actual = NewsStore.selectSourcesByCategory();
+    const expected = 3;
+    expect(Object.keys(actual).length).toEqual(expected);
   });
 
   it('should search and the filtered source when bbc is searched', () => {

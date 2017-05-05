@@ -1,0 +1,28 @@
+.Collapsible{
+  margin-bottom: 15px;
+
+  .Collapsible__trigger{
+      font-size: 13px;
+      margin-top: 5px;
+      display: block;
+      cursor: pointer;
+      &.is-open{
+        font-weight: 900;
+        color: #b91521
+      }
+      &:hover{
+        color: #b91521;
+      }
+  }
+
+  .Collapsible__link {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+    padding-left: 10px;
+  }
+
+  .Collapsible__contentInner{
+    padding-bottom: 20px;
+  }
+}

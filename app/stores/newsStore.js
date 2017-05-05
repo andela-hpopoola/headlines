@@ -81,10 +81,10 @@ const NewsStore = Object.assign(EventEmitter.prototype, {
     const sourceObj = {};
     sources.forEach((source) => {
       if (sourceObj[source.category] !== undefined) {
-        sourceObj[source.category].push(source.name);
+        sourceObj[source.category].push(`${source.id}_${source.name}_${source.sortBysAvailable[0]}`);
       } else {
         sourceObj[source.category] = [];
-        sourceObj[source.category].push(source.name);
+        sourceObj[source.category].push(`${source.id}_${source.name}_${source.sortBysAvailable[0]}`);
       }
     });
     return sourceObj;

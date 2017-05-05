@@ -1,4 +1,4 @@
-![Build Status](https://travis-ci.org/andela-hpopoola/headlines.svg?branch=develop)](https://travis-ci.org/andela-hpopoola/headlines)
+[![Build Status](https://travis-ci.org/andela-hpopoola/headlines.svg?branch=develop)](https://travis-ci.org/andela-hpopoola/headlines)
 [![Coverage Status](https://coveralls.io/repos/github/andela-hpopoola/headlines/badge.svg?branch=develop)](https://coveralls.io/github/andela-hpopoola/headlines?branch=develop)
 [![Code Climate](https://codeclimate.com/github/andela-hpopoola/headlines/badges/gpa.svg)](https://codeclimate.com/github/andela-hpopoola/headlines)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()

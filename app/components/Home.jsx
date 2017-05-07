@@ -20,7 +20,8 @@ class Home extends Component {
     super(props);
     this.state = { sources: [] };
     this.onChange = this.onChange.bind(this);
-    // this.searchSources.bind(this);
+    this.searchSources.bind(this);
+    NewsActions.getAllSources();
   }
 
   /**
@@ -29,7 +30,6 @@ class Home extends Component {
    */
   componentDidMount() {
     NewsStore.addChangeListener(this.onChange);
-    NewsActions.getAllSources();
   }
 
   /**
@@ -71,7 +71,7 @@ class Home extends Component {
             <Nav />
             <h1 className="text-center">All Sources</h1>
             <SearchForm
-              onChange={ this.searchSources.bind(this) }
+              onChange={ this.searchSources }
               sources={ this.state.sources }
             />
             <SourcesList sources={ this.state.sources } />

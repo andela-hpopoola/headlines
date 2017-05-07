@@ -36,7 +36,7 @@ class Home extends Component {
    * Invoked immediately when a component is unmounted
    * @return {void} returns nothing
    */
-  componentWillUnMount() {
+  componentWillUnmount() {
     NewsStore.removeChangeListener(this.onChange);
   }
 

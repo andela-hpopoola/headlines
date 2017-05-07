@@ -1,13 +1,16 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import expect from 'expect';
+import sinon from 'sinon';
 import SourcesByType from './../../components/SourcesByType.jsx';
 
 describe('SourcesByType Component', () => {
+  const spy = sinon.spy(SourcesByType.prototype, 'loadPage');
+  const onClick = () => true;
   const params = { sport: ['bbc-sport_BBC_top'], entertainment: ['bbc_BBC_top'] };
   const wrapper = shallow(
     <SourcesByType
-      sourcesObj = {params}
+      sourcesObj = {params} onClick={onClick}
     />
   );
 
@@ -25,6 +28,11 @@ describe('SourcesByType Component', () => {
     const actual = wrapper.node.props.className.includes('widget');
     const expected = true;
     expect(actual).toEqual(expected);
+  });
+
+  it('should have the loadPage Method', () => {
+    wrapper.instance().loadPage('cnn', 'top');
+    sinon.assert.calledOnce(spy);
   });
 });
 

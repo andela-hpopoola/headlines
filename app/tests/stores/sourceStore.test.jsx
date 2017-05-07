@@ -44,18 +44,6 @@ describe('Source Store', () => {
     expect(Object.keys(actual).length).toEqual(expected);
   });
 
-  it('should search and the filtered source when bbc is searched', () => {
-    const actual = NewsStore.getSources();
-    const expected = filteredSources;
-    expect(actual).toEqual(expected);
-  });
-
-  it('should search and return a length of 2 when bbc is searched', () => {
-    const actual = NewsStore.getSources();
-    const expected = 2;
-    expect(actual.length).toEqual(expected);
-  });
-
   it('should reformat sources for select form field', () => {
     const actual = NewsStore.selectSources();
     const expected = 6;

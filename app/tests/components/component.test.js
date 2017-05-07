@@ -9,11 +9,9 @@ expect.extend(expectJSX);
 
 describe('Alert', () => {
   const wrapper = shallow(<Alert />);
-  // console.log(wrapper.debug());
   const props = { alertType: 'success', message: 'testing' };
   wrapper.setProps(props);
   const alertProps = wrapper.props().children.props;
-  // console.log(currentProps.children.props.className.includes('alert'));
 
   it('should exists', () => {
     expect(wrapper).toExist();
@@ -35,7 +33,6 @@ describe('Alert', () => {
   });
 
   it('has a class name of "alert"', () => {
-    // console.log(wrapper.find('.alert'));
     const actual = alertProps.className.includes('alert');
     const expected = true;
     expect(actual).toEqual(expected);

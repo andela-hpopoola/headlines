@@ -6,8 +6,6 @@ import Login from './Login.jsx';
 import Logout from './Logout.jsx';
 import News from './News.jsx';
 
-
-
 /**
  * Class to route all the pages
  * @extends React.Component
@@ -21,7 +19,8 @@ class Routes extends Component {
    * @return {boolean} the login status
    */
   requireAuth(nextState, replace) {
-    if ((global.window !== undefined) && !global.window.localStorage.getItem('profile')) {
+    this.name = 'Logging In';
+    if (!global.window.localStorage.getItem('profile')) {
       replace({
         pathname: '/',
         state: { nextPathname: nextState.location.pathname }

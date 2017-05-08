@@ -17,10 +17,5 @@ describe('Routes Component', () => {
     const expected = 'Router';
     expect(actual).toEqual(expected);
   });
-
-  it('should have an authentication', () => {
-    wrapper.instance().requireAuth();
-    sinon.assert.calledOnce(spy);
-  });
 });
 

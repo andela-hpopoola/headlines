@@ -12,7 +12,13 @@ const responseFromGoogle = (response) => {
   const profile = response.profileObj;
   const history = createHistory({ forceRefresh: true });
   if (profile) {
+    // Save Output from Google
     global.window.localStorage.setItem('profile', JSON.stringify(profile));
+
+    // Set Expiry Datevar today = new Date();
+    const today = new Date();
+    const expiryDate = new Date(today.getTime() + (24 * 60 * 60 * 1000));
+    global.window.localStorage.setItem('expiryDate', JSON.stringify(expiryDate));
     history.push('/#/news');
     global.window.location.reload();
   }

@@ -10,13 +10,13 @@
   padding: 30px;
   transition: all .5s ease;
   color: #fff;
-  background: #446cb3;
+  background: lighten($brand-primary, 10%);
   transition: 0.4s ease;
   -webkit-transition: 0.4s ease;
   -moz-transition: 0.4s ease;
 
   &:hover{
-    background: #b91521;
+    background: $brand-danger;
 
     a {
       text-decoration: none;

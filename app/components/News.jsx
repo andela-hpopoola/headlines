@@ -114,73 +114,86 @@ class News extends Component {
    * @return {jsx} The News Content
    */
   render() {
+    this.bgImage = { backgroundImage: `url(./images/${this.state.currentSourceObj.category}.jpg)` };
     const selectOptions = NewsStore.selectSources();
     return (
-        <div className="News__page row">
+        <div className="News__page">
             <Nav />
-            <div className="page-header text-center">
-              <h1>{ this.state.currentSourceObj.name }</h1>
-              <div className="row">
-                <div className="lead col-sm-offset-2 col-sm-8">
-                  { this.state.currentSourceObj.description }
-                </div>
-              </div>
-              <SortByList
-                sort = { this.state.currentSourceObj.sortBy || [] }
-                sourceID = { this.state.source }
-                currentSort = { this.state.sortBy }
-                onClick={ this.loadSortPage }
-              />
-            </div>
-
-            <div className="col-sm-8">
-              <NewsList
-                articles={ this.state.articles }
-                newsSource={ this.state.source }
-                newsSortBy={ this.state.sortBy }
-              />
-            </div>
-
-            <div className="col-sm-4">
-              <div className="widget thumbnail">
-
-                <h3>Select Source</h3>
-                <Select
-                  name="get_sources_select"
-                  value={this.state.selectedSourceObj.id}
-                  options={ selectOptions }
-                  onChange={ this.logChange }
-                  clearableValue= {false}
-                />
-
-                {/* If there a description to show */}
-                { Object.keys(this.state.selectedSourceObj).length !== 0 ?
-                <div className="description__text">
-
-                  <h5>{ this.state.selectedSourceObj.name }</h5>
-                  { this.state.selectedSourceObj.description }
-
-                  <div className="description__button">
-                    <Link
-                      to={`news/${this.state.source}/${this.state.selectedSortedBy}`}
-                      className="btn btn-primary"
-                      onClick= {
-                        this.loadPage.bind(
-                          this, this.state.source, this.state.selectedSortedBy
-                        )
-                      } >
-                      View {this.state.selectedSourceObj.name }
-                    </Link>
+            <section className="top-page-title page-header text-center">
+              <div className="top-page-title__parallax" style={ this.bgImage }></div>
+              <div className="top-page-title__overlay"></div>
+              <div className="top-page-title__content">
+                <div className="container">
+                  <div className="top-page-title__content-text">
+                    <h3>{ this.state.currentSourceObj.name }</h3>
+                    <div className="row">
+                      <div className="lead col-sm-offset-2 col-sm-8">
+                        { this.state.currentSourceObj.description }
+                      </div>
+                    </div>
+                    <SortByList
+                      sort = { this.state.currentSourceObj.sortBy || [] }
+                      sourceID = { this.state.source }
+                      currentSort = { this.state.sortBy }
+                      onClick={ this.loadSortPage }
+                    />
                   </div>
                 </div>
-                : ''
-                 }
               </div>
-              <SourcesByType
-                sourcesObj = {NewsStore.selectSourcesByCategory()}
-                onClick={ this.loadPage }
-              />
-            </div>
+            </section>
+
+            <section className="container gutter-top">
+              <div className="row">
+                <div className="col-sm-8">
+                  <NewsList
+                    articles={ this.state.articles }
+                    newsSource={ this.state.source }
+                    newsSortBy={ this.state.sortBy }
+                  />
+                </div>
+
+                <div className="col-sm-4">
+                  <div className="widget thumbnail">
+
+                    <h3>Select Source</h3>
+                    <Select
+                      name="get_sources_select"
+                      value={this.state.selectedSourceObj.id}
+                      options={ selectOptions }
+                      onChange={ this.logChange }
+                      clearableValue= {false}
+                    />
+
+                    {/* If there a description to show */}
+                    { Object.keys(this.state.selectedSourceObj).length !== 0 ?
+                    <div className="description__text">
+
+                      <h5>{ this.state.selectedSourceObj.name }</h5>
+                      { this.state.selectedSourceObj.description }
+
+                      <div className="description__button">
+                        <Link
+                          to={`news/${this.state.source}/${this.state.selectedSortedBy}`}
+                          className="btn btn-primary"
+                          onClick= {
+                            this.loadPage.bind(
+                              this, this.state.source, this.state.selectedSortedBy
+                            )
+                          } >
+                          View {this.state.selectedSourceObj.name }
+                        </Link>
+                      </div>
+                    </div>
+                    : ''
+                    }
+                  </div>
+                  <SourcesByType
+                    sourcesObj = {NewsStore.selectSourcesByCategory()}
+                    onClick={ this.loadPage }
+                  />
+                </div>
+              </div>
+            </section>
         </div>
     );
   }

@@ -7,7 +7,7 @@
 	  position: relative;
     height: 180px;
     overflow: hidden;
-    background: gray;
+    background: $gray-light;
      img{
       transition: 0.4s ease;
       -webkit-transition: 0.4s ease;
@@ -23,14 +23,14 @@
   .article__body{
     font-weight: 400;
     padding: 30px;
-    color: #767676;
+    color: $gray-light;
 
     .article__intro {
       font-size: 12px;
     }
 
     .article__title {
-      color: #232323;
+      color: $gray-darker;
       font-weight: 400;
       height: 80px;
       font-size: 18px;
@@ -43,14 +43,14 @@
   }
   
   hr{
-    border-color: #ebebeb;
+    border-color: $gray-lighter;
   }
 
   .article__lower{
     font-size: 11px;
     font-style: italic;
     display: inline-block;
-    color: #767676;
+    color: $gray-light;
     margin: 0;
 
     .article__author{
@@ -73,23 +73,16 @@
     }
 
     .article__body, .article__lower, .article__title{
-      color: #b91521;
+      color: $brand-danger;
     }
   }
 
 
-.btn-read-more {
+.btn-read-more{
   height: 32px;
   border-radius: 0;
   font-size: 11px;
   line-height: 18px;
-  color: #666;
-
-  &:hover{
-    background: #b91521;
-    color: white;
-    border: red;
-  }
 }
   
 }

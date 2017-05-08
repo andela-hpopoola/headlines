@@ -34,7 +34,7 @@ const NewsSingle = (props) => {
                   <Share url={article.url} title={article.title} />
                 </div>
                 <div className="col-xs-4">
-                  <a href={ article.url } className="btn btn-default btn-read-more" target="_blank">Read More</a>
+                  <a href={ article.url } className="btn btn-primary btn-read-more" target="_blank">Read More</a>
                 </div>
               </div>
 

@@ -22,12 +22,6 @@ describe('Home Component', () => {
     expect(actual).toEqual(expected);
   });
 
-  it('should contain a top level header (h1)', () => {
-    const actual = childNode[1].type;
-    const expected = 'h1';
-    expect(actual).toEqual(expected);
-  });
-
   it('searchSources Method is called once', () => {
     wrapper.instance().searchSources('1');
     sinon.assert.calledOnce(spySearchSources);

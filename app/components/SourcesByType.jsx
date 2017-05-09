@@ -9,6 +9,15 @@ import { Link } from 'react-router';
  * @returns {jsx} the page navigation
  */
 class SourcesByType extends Component {
+
+  /**
+   * Set the Initial conditions for Sources By Type
+   * @param {object} props - The property of the Sources by Type Class
+   */
+  constructor(props) {
+    super(props);
+    this.loadPage = this.loadPage.bind(this);
+  }
   /**
    * Returns the value in the Search Field
    * @param {string} source - source of news
@@ -38,7 +47,7 @@ class SourcesByType extends Component {
           </Link>;
       });
 
-      return <Collapsible trigger={key.toUpperCase()}>
+      return <Collapsible key={key} trigger={key.toUpperCase()}>
           {body}
         </Collapsible>;
     });

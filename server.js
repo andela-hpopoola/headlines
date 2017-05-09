@@ -19,6 +19,4 @@ app.get('*', (request, response) => {
   response.send('Welcome to Headlines');
 });
 
-app.listen(PORT, () => {
-  // console.log('Express server is up on port ' + PORT);
-});
+app.listen(PORT, () => {});

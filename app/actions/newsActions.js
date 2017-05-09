@@ -2,7 +2,6 @@ import request from 'superagent';
 import Dispatcher from '../dispatcher/appDispatcher';
 import ActionTypes from '../constants/actionTypes';
 
-
 const NewsActions = {
 
   getAllSources: () => {
@@ -19,7 +18,8 @@ const NewsActions = {
   },
 
   getNews: (source, sortBy) => {
-    const NEWS_URL = 'https://newsapi.org/v1/articles?apiKey=213327409d384371851777e7c7f78dfe';
+    const apiKey = process.env.NEWS_API_KEY;
+    const NEWS_URL = `https://newsapi.org/v1/articles?apiKey=${apiKey}`;
 
     request
       .get(NEWS_URL)

@@ -34,7 +34,7 @@ const NewsStore = Object.assign(EventEmitter.prototype, {
     return filteredSources;
   },
 
-  getSourceObj(sourceId) {
+  getSourceObject(sourceId) {
     if (sources) {
       const returnedSources = sources.filter(
         source => source.id === sourceId

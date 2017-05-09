@@ -4,6 +4,7 @@ import SearchForm from './SearchForm.jsx';
 import NewsStore from '../stores/newsStore';
 import NewsActions from '../actions/newsActions';
 import Nav from './Nav.jsx';
+import Footer from './Footer.jsx';
 
 
 /**
@@ -20,7 +21,7 @@ class Home extends Component {
     super(props);
     this.state = { sources: [] };
     this.onChange = this.onChange.bind(this);
-    this.searchSources.bind(this);
+    this.searchSources = this.searchSources.bind(this);
     NewsActions.getAllSources();
   }
 
@@ -66,15 +67,34 @@ class Home extends Component {
    * @return {jsx} The News Content
    */
   render() {
+    this.bgImage = { backgroundImage: 'url(./images/general.jpg)' };
     return (
         <div>
-            <Nav />
-            <h1 className="text-center">All Sources</h1>
-            <SearchForm
-              onChange={ this.searchSources }
-              sources={ this.state.sources }
-            />
-            <SourcesList sources={ this.state.sources } />
+          <Nav />
+          <section className="top-page-title page-header text-center">
+            <div className="top-page-title__parallax" style={ this.bgImage }></div>
+            <div className="top-page-title__overlay"></div>
+            <div className="top-page-title__content">
+              <div className="container">
+                <div className="top-page-title__content-text">
+                  <h3>All Sources</h3>
+                  <div className="row">
+                    <div className="lead col-sm-offset-2 col-sm-8">
+                      Get Live Headlines from over 70 Sources.
+                      <SearchForm
+                        onChange={ this.searchSources }
+                        sources={ this.state.sources }
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <div className="container gutter-top">
+              <SourcesList sources={ this.state.sources } />
+          </div>
+          <Footer />
         </div>
     );
   }

@@ -1,5 +1,6 @@
 const webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: [
@@ -13,6 +14,14 @@ module.exports = {
   plugins: [
     new ExtractTextPlugin('public/style.css', {
       allChunks: true
+    }),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery'
+    }),
+    new Dotenv({
+      // path: './.env', // Path to .env file (this is the default)
+      // safe: true // load .env.example (defaults to "false" which does not use dotenv-safe)
     })
   ],
   output: {
@@ -31,7 +40,7 @@ module.exports = {
           presets: ['react', 'es2015', 'stage-0']
         },
         test: /\.jsx?$/,
-        exclude: /(node_modules|bower_components)/
+        exclude: /(node_modules)/
       },
       {
         test: /\.scss$/,

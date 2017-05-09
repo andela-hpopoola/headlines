@@ -8,6 +8,7 @@ import NewsActions from '../actions/newsActions';
 import SortByList from './SortByList.jsx';
 import SourcesByType from './SourcesByType.jsx';
 import Nav from './Nav.jsx';
+import Footer from './Footer.jsx';
 
 /**
  * Class to display news
@@ -26,8 +27,8 @@ class News extends Component {
       sortBy: this.props.params.sortby || '',
       source: this.props.params.source || '',
       sources: [],
-      selectedSourceObj: {},
-      currentSourceObj: {},
+      selectedSourceObject: {},
+      currentSourceObject: {},
       selectedSortedBy: ''
     };
 
@@ -60,12 +61,12 @@ class News extends Component {
    * @return {void} returns nothing
    */
   onChange() {
-    const currentSourceObj = NewsStore.getSourceObj(this.state.source);
+    const currentSourceObject = NewsStore.getSourceObject(this.state.source);
     this.setState({
       articles: NewsStore.getNews(this.state.source, this.state.sortBy) || [],
-      sourceObj: NewsStore.getSourceObj(this.state.source) || [],
+      sourceObj: NewsStore.getSourceObject(this.state.source) || [],
       sources: NewsStore.getAllSources() || [],
-      currentSourceObj
+      currentSourceObject
     });
   }
 
@@ -76,12 +77,12 @@ class News extends Component {
    */
   logChange(value) {
     // get the object
-    const selectedSourceObj = NewsStore.getSourceObj(value.value);
-    const selectedSortedBy = selectedSourceObj.sortBy ? selectedSourceObj.sortBy[0].toString() : 'none - ';
+    const selectedSourceObject = NewsStore.getSourceObject(value.value);
+    const selectedSortedBy = selectedSourceObject.sortBy ? selectedSourceObject.sortBy[0].toString() : 'none - ';
     this.setState({
       source: value.value,
       sortBy: this.state.sortBy,
-      selectedSourceObj,
+      selectedSourceObject,
       selectedSortedBy
     });
   }
@@ -93,8 +94,8 @@ class News extends Component {
    * @return {object} get the news based on selected source
   */
   loadPage(source, sortby) {
-    const currentSourceObj = NewsStore.getSourceObj(source);
-    this.setState({ currentSourceObj, source, selectedSourceObj: currentSourceObj });
+    const currentSourceObject = NewsStore.getSourceObject(source);
+    this.setState({ currentSourceObject, source, selectedSourceObject: currentSourceObject });
     NewsActions.getNews(source, sortby);
   }
 
@@ -114,73 +115,88 @@ class News extends Component {
    * @return {jsx} The News Content
    */
   render() {
+    this.bgImage = { backgroundImage: `url(./images/${this.state.currentSourceObject.category}.jpg)` };
     const selectOptions = NewsStore.selectSources();
     return (
-        <div className="News__page row">
+        <div className="News__page">
             <Nav />
-            <div className="page-header text-center">
-              <h1>{ this.state.currentSourceObj.name }</h1>
-              <div className="row">
-                <div className="lead col-sm-offset-2 col-sm-8">
-                  { this.state.currentSourceObj.description }
-                </div>
-              </div>
-              <SortByList
-                sort = { this.state.currentSourceObj.sortBy || [] }
-                sourceID = { this.state.source }
-                currentSort = { this.state.sortBy }
-                onClick={ this.loadSortPage }
-              />
-            </div>
-
-            <div className="col-sm-8">
-              <NewsList
-                articles={ this.state.articles }
-                newsSource={ this.state.source }
-                newsSortBy={ this.state.sortBy }
-              />
-            </div>
-
-            <div className="col-sm-4">
-              <div className="widget thumbnail">
-
-                <h3>Select Source</h3>
-                <Select
-                  name="get_sources_select"
-                  value={this.state.selectedSourceObj.id}
-                  options={ selectOptions }
-                  onChange={ this.logChange }
-                  clearableValue= {false}
-                />
-
-                {/* If there a description to show */}
-                { Object.keys(this.state.selectedSourceObj).length !== 0 ?
-                <div className="description__text">
-
-                  <h5>{ this.state.selectedSourceObj.name }</h5>
-                  { this.state.selectedSourceObj.description }
-
-                  <div className="description__button">
-                    <Link
-                      to={`news/${this.state.source}/${this.state.selectedSortedBy}`}
-                      className="btn btn-primary"
-                      onClick= {
-                        this.loadPage.bind(
-                          this, this.state.source, this.state.selectedSortedBy
-                        )
-                      } >
-                      View {this.state.selectedSourceObj.name }
-                    </Link>
+            <section className="top-page-title page-header text-center">
+              <div className="top-page-title__parallax" style={ this.bgImage }></div>
+              <div className="top-page-title__overlay"></div>
+              <div className="top-page-title__content">
+                <div className="container">
+                  <div className="top-page-title__content-text">
+                    <h3>{ this.state.currentSourceObject.name }</h3>
+                    <div className="row">
+                      <div className="lead col-sm-offset-2 col-sm-8">
+                        { this.state.currentSourceObject.description }
+                      </div>
+                    </div>
+                    <SortByList
+                      sort = { this.state.currentSourceObject.sortBy || [] }
+                      sourceID = { this.state.source }
+                      currentSort = { this.state.sortBy }
+                      onClick={ this.loadSortPage }
+                    />
                   </div>
                 </div>
-                : ''
-                 }
               </div>
-              <SourcesByType
-                sourcesObj = {NewsStore.selectSourcesByCategory()}
-                onClick={ this.loadPage }
-              />
-            </div>
+            </section>
+
+            <section className="container gutter-top">
+              <div className="row">
+                <div className="col-sm-8">
+                  <NewsList
+                    articles={ this.state.articles }
+                    newsSource={ this.state.source }
+                    newsSortBy={ this.state.sortBy }
+                  />
+                </div>
+
+                <div className="col-sm-4">
+                  <div className="widget thumbnail">
+
+                    <h3>Select Source</h3>
+                    <Select
+                      name="get_sources_select"
+                      value={this.state.selectedSourceObject.id}
+                      options={ selectOptions }
+                      onChange={ this.logChange }
+                      clearableValue= {false}
+                    />
+
+                    {/* If there a description to show */}
+                    { Object.keys(this.state.selectedSourceObject).length !== 0 ?
+                    <div className="description__text">
+
+                      <h5>{ this.state.selectedSourceObject.name }</h5>
+                      { this.state.selectedSourceObject.description }
+
+                      <div className="description__button">
+                        <Link
+                          to={`news/${this.state.source}/${this.state.selectedSortedBy}`}
+                          className="btn btn-primary"
+                          onClick= {
+                            this.loadPage.bind(
+                              this, this.state.source, this.state.selectedSortedBy
+                            )
+                          } >
+                          View {this.state.selectedSourceObject.name }
+                        </Link>
+                      </div>
+                    </div>
+                    : ''
+                    }
+                  </div>
+                  <SourcesByType
+                    sourcesObj = {NewsStore.selectSourcesByCategory()}
+                    onClick={ this.loadPage }
+                  />
+                </div>
+              </div>
+            </section>
+
+            <Footer />
         </div>
     );
   }

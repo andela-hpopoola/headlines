@@ -17,7 +17,7 @@ describe('Main Component', () => {
   });
 
   it('has a class name of `container`', () => {
-    const actual = wrapper.node.props.className.includes('container');
+    const actual = wrapper.node.props.className.includes('main-container');
     const expected = true;
     expect(actual).toEqual(expected);
   });

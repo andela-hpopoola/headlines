@@ -8,6 +8,14 @@ import PropTypes from 'prop-types';
 class SearchForm extends Component {
 
   /**
+   * Set the Initial conditions for showing the Search Form
+   * @param {object} props - The property of the Search Form Class
+   */
+  constructor(props) {
+    super(props);
+    this.handleSearch = this.handleSearch.bind(this);
+  }
+  /**
    * Returns the value in the Search Field
    * @param {function} e - event of the field
    * @return {string} Value in String Field
@@ -23,10 +31,10 @@ class SearchForm extends Component {
   render() {
     return (
       <div className="row search">
-        <form className="col-md-6 col-md-offset-3">
+        <form className="col-md-8 col-sm-10 col-sm-offset-1 col-md-offset-2">
           <input
             className="form-control search__input"
-            onChange={this.handleSearch.bind(this)}
+            onChange={this.handleSearch}
             placeholder="Search for a News Source"
           />
         </form>

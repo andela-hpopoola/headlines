@@ -10,7 +10,6 @@ describe('Home Component', () => {
   const spyComponentWillUnmount = sinon.spy(Home.prototype, 'componentWillUnmount');
   const spySearchSources = sinon.spy(Home.prototype, 'searchSources');
   const wrapper = shallow(<Home />);
-  const childNode = wrapper.children().nodes;
 
   it('should exists', () => {
     expect(wrapper).toExist();
@@ -19,12 +18,6 @@ describe('Home Component', () => {
   it('should be a div item', () => {
     const actual = wrapper.type();
     const expected = 'div';
-    expect(actual).toEqual(expected);
-  });
-
-  it('should contain a top level header (h1)', () => {
-    const actual = childNode[1].type;
-    const expected = 'h1';
     expect(actual).toEqual(expected);
   });
 

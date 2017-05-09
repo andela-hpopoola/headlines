@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
 import createHistory from 'history/createBrowserHistory';
 import Nav from './Nav.jsx';
+import Footer from './Footer.jsx';
 
 /**
  * Log the user out when visited
  * @return {null} redirects user to login page
  */
-// const logOut = () => {
-//   const history = createHistory({ forceRefresh: true });
-//   if (global.window.localStorage.getItem('profile')) {
-//     global.window.localStorage.removeItem('profile');
-//     history.push('/#/');
-//     global.window.location.reload();
-//   }
-// };
+const signOut = () => {
+  const history = createHistory({ forceRefresh: true });
+  if (global.window.localStorage.getItem('profile')) {
+    global.window.localStorage.removeItem('profile');
+    global.window.localStorage.removeItem('expiryDate');
+    history.push('/#/');
+    global.window.location.reload();
+  }
+};
 
 /**
  * Class displaying Logout Page
@@ -26,7 +28,7 @@ class Logout extends Component {
  */
   logOut() {
     this.name = 'Logging Out';
-    return true;
+    signOut();
   }
   /**
    * Show the Logout Component
@@ -38,6 +40,7 @@ class Logout extends Component {
       <div>
         <Nav />
         <h1> Logging Out </h1>
+        <Footer />
       </div>
     );
   }

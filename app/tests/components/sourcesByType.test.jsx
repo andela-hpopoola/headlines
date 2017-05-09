@@ -20,7 +20,7 @@ describe('SourcesByType Component', () => {
 
   it('should be a div item', () => {
     const actual = wrapper.type();
-    const expected = 'div';
+    const expected = 'ul';
     expect(actual).toEqual(expected);
   });
 

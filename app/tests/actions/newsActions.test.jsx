@@ -2,7 +2,6 @@ import expect from 'expect';
 import expectJSX from 'expect-jsx';
 import sinon from 'sinon';
 import NewsActions from './../../actions/newsActions';
-import Dispatcher from './../../dispatcher/appDispatcher';
 
 
 expect.extend(expectJSX);

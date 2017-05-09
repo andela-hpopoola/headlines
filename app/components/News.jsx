@@ -30,7 +30,13 @@ class News extends Component {
       currentSourceObj: {},
       selectedSortedBy: ''
     };
+
+    NewsActions.getNews(this.props.params.source, this.props.params.sortby);
+    NewsActions.getAllSources();
     this.onChange = this.onChange.bind(this);
+    this.loadSortPage = this.loadSortPage.bind(this);
+    this.logChange = this.logChange.bind(this);
+    this.loadPage = this.loadPage.bind(this);
   }
 
   /**
@@ -39,15 +45,13 @@ class News extends Component {
    */
   componentDidMount() {
     NewsStore.addChangeListener(this.onChange);
-    NewsActions.getNews(this.props.params.source, this.props.params.sortby);
-    NewsActions.getAllSources();
   }
 
   /**
    * Invoked immediately when a component is unmounted
    * @return {void} returns nothing
    */
-  componentWillUnMount() {
+  componentWillUnmount() {
     NewsStore.removeChangeListener(this.onChange);
   }
 
@@ -125,7 +129,7 @@ class News extends Component {
                 sort = { this.state.currentSourceObj.sortBy || [] }
                 sourceID = { this.state.source }
                 currentSort = { this.state.sortBy }
-                onClick={ this.loadSortPage.bind(this) }
+                onClick={ this.loadSortPage }
               />
             </div>
 
@@ -145,7 +149,7 @@ class News extends Component {
                   name="get_sources_select"
                   value={this.state.selectedSourceObj.id}
                   options={ selectOptions }
-                  onChange={ this.logChange.bind(this) }
+                  onChange={ this.logChange }
                   clearableValue= {false}
                 />
 
@@ -174,7 +178,7 @@ class News extends Component {
               </div>
               <SourcesByType
                 sourcesObj = {NewsStore.selectSourcesByCategory()}
-                onClick={ this.loadPage.bind(this) }
+                onClick={ this.loadPage }
               />
             </div>
         </div>

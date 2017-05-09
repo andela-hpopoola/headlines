@@ -6,20 +6,7 @@ import Login from './Login.jsx';
 import Logout from './Logout.jsx';
 import News from './News.jsx';
 
-/**
- * Check if the user is logged in
- * @param {string} nextState the next state to load
- * @param {string} replace the page to replace
- * @return {boolean} the login status
- */
-const requireAuth = (nextState, replace) => {
-  if (!global.window.localStorage.getItem('profile')) {
-    replace({
-      pathname: '/',
-      state: { nextPathname: nextState.location.pathname }
-    });
-  }
-};
+
 
 /**
  * Class to route all the pages
@@ -27,6 +14,20 @@ const requireAuth = (nextState, replace) => {
  */
 class Routes extends Component {
 
+  /**
+   * Check if the user is logged in
+   * @param {string} nextState the next state to load
+   * @param {string} replace the page to replace
+   * @return {boolean} the login status
+   */
+  requireAuth(nextState, replace) {
+    if ((global.window !== undefined) && !global.window.localStorage.getItem('profile')) {
+      replace({
+        pathname: '/',
+        state: { nextPathname: nextState.location.pathname }
+      });
+    }
+  }
   /**
    * Render the Routes of the News Page
    * @return {Page} the routes of the page
@@ -37,9 +38,9 @@ class Routes extends Component {
       <Router history={hashHistory}>
         <Route path="/" component={Main}>
           <IndexRoute component={Login} />
-          <Route path="news/:source/:sortby" component={News} onEnter={ requireAuth } />
-          <Route path="news" component={Home} onEnter={ requireAuth } />
-          <Route path="logout" component={Logout} />
+          <Route path="news/:source/:sortby" component={News} onEnter={ Routes.requireAuth } />
+          <Route path="news" component={Home} onEnter={ Routes.requireAuth } />
+          <Route path="logout" component={Logout} onEnter={ Routes.requireAuth } />
         </Route>
       </Router>
     );

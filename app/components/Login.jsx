@@ -37,12 +37,13 @@ class Login extends Component {
     this.bgImage = { backgroundImage: 'url(./bg.jpg)' };
     return (
       <div className="login__page full" style={ this.bgImage }>
+        <div className="overlay"></div>
         <div className="container">
           <div className="row">
             <div className="col-md-6 col-md-offset-3">
               <div className="login">
-                <h3 className="login__title">Welcome to Headlines</h3>
-                <p className="lead">Get News from over 70 Sources</p>
+                <img src="./images/logo_inverse.png" alt="Headlines Logo"/>
+                <h3>Get Live Headlines from over 70 Sources</h3>
                 <GoogleLogin
                   clientId="85385577141-0nb9rf764mh1eetjmd8p5jjmthr8e8hq.apps.googleusercontent.com"
                   buttonText="Login with Google"

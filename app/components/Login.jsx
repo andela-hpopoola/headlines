@@ -8,7 +8,7 @@ import GoogleLogin from 'react-google-login';
  * @param {object} response - Returns the User Profile
  * @return {object} the error message
  */
-const responseFromGoogle = (response) => {
+const getResponseFromGoogle = (response) => {
   const profile = response.profileObj;
   const history = createHistory({ forceRefresh: true });
   if (profile) {
@@ -46,8 +46,8 @@ class Login extends Component {
                 <GoogleLogin
                   clientId="85385577141-0nb9rf764mh1eetjmd8p5jjmthr8e8hq.apps.googleusercontent.com"
                   buttonText="Login with Google"
-                  onSuccess={responseFromGoogle}
-                  onFailure={responseFromGoogle}
+                  onSuccess={getResponseFromGoogle}
+                  onFailure={getResponseFromGoogle}
                 />
               </div>
             </div>

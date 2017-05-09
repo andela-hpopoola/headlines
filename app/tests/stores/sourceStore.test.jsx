@@ -13,11 +13,6 @@ describe('Source Store', () => {
     { id: 'bbc-sport', name: 'BBC Sport', category: 'sport', sortBysAvailable: ['top'] },
   ];
 
-  const filteredSources = [
-    { id: 'bbc-news', name: 'BBC News', category: 'general', sortBysAvailable: ['top'] },
-    { id: 'bbc-sport', name: 'BBC Sport', category: 'sport', sortBysAvailable: ['top'] },
-  ];
-
   it('should exists', () => {
     expect(NewsStore).toExist();
   });
@@ -57,14 +52,14 @@ describe('Source Store', () => {
   });
 
   it('should return a given source when searched by id', () => {
-    const actualObj = NewsStore.getSourceObj('bbc-news');
+    const actualObj = NewsStore.getSourceObject('bbc-news');
     const actual = actualObj.name;
     const expected = 'BBC News';
     expect(actual).toEqual(expected);
   });
 
   it('should return an empty object with a non-existent object', () => {
-    const actual = NewsStore.getSourceObj('non-existent-source');
+    const actual = NewsStore.getSourceObject('non-existent-source');
     const expected = {};
     expect(actual).toEqual(expected);
   });

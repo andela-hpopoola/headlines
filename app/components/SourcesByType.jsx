@@ -32,7 +32,7 @@ class SourcesByType extends Component {
    * @param {string} sourcesObj - source of news to sort
    * @return {object} The sorted sources by category
    */
-  output(sourcesObj) {
+  generateAccordion(sourcesObj) {
     return Object.keys(sourcesObj).map((key) => {
       const body = sourcesObj[key].map((source, index) => {
         const [linkID, linkSource, linkSortBy] = source.split('_');
@@ -64,7 +64,7 @@ class SourcesByType extends Component {
     return (
         <ul id="accordion" className="widget thumbnail Collapsible">
           <h3> News Source by Category </h3><br />
-          {this.output(this.props.sourcesObj)}
+          {this.generateAccordion(this.props.sourcesObj)}
         </ul>
     );
   }

@@ -8,6 +8,7 @@ import NewsActions from '../actions/newsActions';
 import SortByList from './SortByList.jsx';
 import SourcesByType from './SourcesByType.jsx';
 import Nav from './Nav.jsx';
+import Footer from './Footer.jsx';
 
 /**
  * Class to display news
@@ -194,6 +195,8 @@ class News extends Component {
                 </div>
               </div>
             </section>
+
+            <Footer />
         </div>
     );
   }

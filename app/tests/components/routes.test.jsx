@@ -1,11 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import expect from 'expect';
-import sinon from 'sinon';
 import Routes from './../../components/Routes.jsx';
 
 describe('Routes Component', () => {
-  const spy = sinon.spy(Routes.prototype, 'requireAuth');
   const wrapper = shallow(<Routes />);
 
   it('should exists', () => {

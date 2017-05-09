@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import createHistory from 'history/createBrowserHistory';
 import Nav from './Nav.jsx';
+import Footer from './Footer.jsx';
 
 /**
  * Log the user out when visited
@@ -39,6 +40,7 @@ class Logout extends Component {
       <div>
         <Nav />
         <h1> Logging Out </h1>
+        <Footer />
       </div>
     );
   }

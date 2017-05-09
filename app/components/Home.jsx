@@ -4,6 +4,7 @@ import SearchForm from './SearchForm.jsx';
 import NewsStore from '../stores/newsStore';
 import NewsActions from '../actions/newsActions';
 import Nav from './Nav.jsx';
+import Footer from './Footer.jsx';
 
 
 /**
@@ -93,6 +94,7 @@ class Home extends Component {
           <div className="container gutter-top">
               <SourcesList sources={ this.state.sources } />
           </div>
+          <Footer />
         </div>
     );
   }

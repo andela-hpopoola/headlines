@@ -5658,3 +5658,9 @@ body {
   background: #de3333;
   color: white;
   border: #de3333; }
+
+footer {
+  padding: 40px 0 30px;
+  margin-top: 60px;
+  background: #3359de;
+  color: white; }

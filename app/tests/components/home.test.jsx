@@ -10,7 +10,6 @@ describe('Home Component', () => {
   const spyComponentWillUnmount = sinon.spy(Home.prototype, 'componentWillUnmount');
   const spySearchSources = sinon.spy(Home.prototype, 'searchSources');
   const wrapper = shallow(<Home />);
-  const childNode = wrapper.children().nodes;
 
   it('should exists', () => {
     expect(wrapper).toExist();

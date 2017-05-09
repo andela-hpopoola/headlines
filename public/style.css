@@ -5410,7 +5410,10 @@ button.close {
       margin: 0;
       margin-bottom: 30px;
       text-overflow: ellipsis;
-      overflow: hidden; }
+      overflow: hidden;
+      display: block; }
+      .article .article__body .article__title:hover {
+        color: #de3333; }
   .article hr {
     border-color: #eeeeee; }
   .article .article__lower {
@@ -5430,10 +5433,6 @@ button.close {
   .article:hover {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.05); }
-    .article:hover a {
-      text-decoration: none; }
-    .article:hover .article__body, .article:hover .article__lower, .article:hover .article__title {
-      color: #de3333; }
   .article .btn-read-more {
     height: 32px;
     border-radius: 0;

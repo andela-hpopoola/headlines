@@ -9,10 +9,7 @@ engines:
   	enabled: true
     config:
     	languages:
-      - javascript
-ratings:
-  paths:
-  - app/**/*
+        javascript
 exclude_paths:
-- app/tests/**/*
-- "**/public/**/*"
+  app/tests/**/*
+  "**/public/**/*"

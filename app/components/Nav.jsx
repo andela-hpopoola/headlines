@@ -24,9 +24,9 @@ class Nav extends Component {
                 data-target="#navbar-target"
                 aria-expanded="false">
                 <span className="sr-only">Toggle navigation</span>
-                <span className="icon-bar"></span>
-                <span className="icon-bar"></span>
-                <span className="icon-bar"></span>
+                <span className="icon-bar" />
+                <span className="icon-bar" />
+                <span className="icon-bar" />
               </button>
               <a className="navbar-brand" href="#/news">
                 <img src="./images/logo.png" alt="Headlines Logo"/>

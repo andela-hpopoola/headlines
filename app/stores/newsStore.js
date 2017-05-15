@@ -1,4 +1,3 @@
-
 import { EventEmitter } from 'events';
 import Dispatcher from '../dispatcher/appDispatcher';
 import ActionTypes from '../constants/actionTypes';

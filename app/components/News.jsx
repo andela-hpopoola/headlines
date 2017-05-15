@@ -125,15 +125,15 @@ class News extends Component {
         `url(./images/${this.state.currentSourceObject.category}.jpg)`
     };
     const selectOptions = NewsStore.selectSources();
+    const newsURL = `news/${this.state.source}/${this.state.selectedSortedBy}`;
     return (
         <div className="News__page">
             <Nav />
             <section className="top-page-title page-header text-center">
               <div
                 className="top-page-title__parallax"
-                style={ this.bgImage }>
-              </div>
-              <div className="top-page-title__overlay"></div>
+                style={this.bgImage} />
+              <div className="top-page-title__overlay" />
               <div className="top-page-title__content">
                 <div className="container">
                   <div className="top-page-title__content-text">
@@ -144,10 +144,10 @@ class News extends Component {
                       </div>
                     </div>
                     <SortByList
-                      sort = { this.state.currentSourceObject.sortBy || [] }
-                      sourceID = { this.state.source }
-                      currentSort = { this.state.sortBy }
-                      onClick={ this.loadSortPage }
+                      sort = {this.state.currentSourceObject.sortBy || []}
+                      sourceID = {this.state.source}
+                      currentSort = {this.state.sortBy}
+                      onClick={this.loadSortPage}
                     />
                   </div>
                 </div>
@@ -158,9 +158,9 @@ class News extends Component {
               <div className="row">
                 <div className="col-sm-8">
                   <NewsList
-                    articles={ this.state.articles }
-                    newsSource={ this.state.source }
-                    newsSortBy={ this.state.sortBy }
+                    articles={this.state.articles}
+                    newsSource={this.state.source}
+                    newsSortBy={this.state.sortBy}
                   />
                 </div>
 
@@ -171,21 +171,22 @@ class News extends Component {
                     <Select
                       name="get_sources_select"
                       value={this.state.selectedSourceObject.id}
-                      options={ selectOptions }
-                      onChange={ this.logChange }
+                      options={selectOptions}
+                      onChange={this.logChange}
                       clearableValue= {false}
                     />
 
                     {/* Show Description */}
-                    { Object.keys(this.state.selectedSourceObject).length !== 0 ?
-                    <div className="description__text">
+                    { Object.keys(
+                      this.state.selectedSourceObject).length !== 0 ?
 
-                      <h5>{ this.state.selectedSourceObject.name }</h5>
-                      { this.state.selectedSourceObject.description }
+                    <div className="description__text">
+                      <h5>{this.state.selectedSourceObject.name}</h5>
+                      {this.state.selectedSourceObject.description}
 
                       <div className="description__button">
                       <Link
-                        to={`news/${this.state.source}/${this.state.selectedSortedBy}`}
+                        to={newsURL}
                         className="btn btn-primary"
                         onClick= {
                           this.loadPage.bind(
@@ -201,7 +202,7 @@ class News extends Component {
                   </div>
                   <SourcesByType
                     sourcesObj = {NewsStore.selectSourcesByCategory()}
-                    onClick={ this.loadPage }
+                    onClick={this.loadPage}
                   />
                 </div>
               </div>

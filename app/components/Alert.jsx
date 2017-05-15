@@ -17,9 +17,11 @@ class Alert extends Component {
       (this.props.message.length > 0)
     ) {
       const type = `alert alert-${this.props.alertType}`;
-      return <div className={ type } role="alert">
-        { this.props.message }
-      </div>;
+      return (
+        <div className={type} role="alert">
+          { this.props.message }
+        </div>
+      );
     }
   }
 
@@ -30,7 +32,7 @@ class Alert extends Component {
   render() {
     return (
       <div>
-          { this.getAlert() }
+          {this.getAlert()}
       </div>
     );
   }

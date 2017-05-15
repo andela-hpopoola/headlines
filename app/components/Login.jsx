@@ -38,8 +38,8 @@ class Login extends Component {
   render() {
     this.bgImage = { backgroundImage: 'url(./bg.jpg)' };
     return (
-      <div className="login__page full" style={ this.bgImage }>
-        <div className="overlay"></div>
+      <div className="login__page full" style={this.bgImage}>
+        <div className="overlay" />
         <div className="container">
           <div className="row">
             <div className="col-md-6 col-md-offset-3">
@@ -48,7 +48,7 @@ class Login extends Component {
                 <h3>Get Live Headlines from over 70 Sources</h3>
                 <GoogleLogin
                   clientId= {clientID}
-                  buttonText='Login with Google'
+                  buttonText="Login with Google"
                   onSuccess={getResponseFromGoogle}
                   onFailure={getResponseFromGoogle}
                 />

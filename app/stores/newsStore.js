@@ -4,39 +4,84 @@ import Dispatcher from '../dispatcher/appDispatcher';
 import ActionTypes from '../constants/actionTypes';
 
 const CHANGE_EVENT = 'change';
-let sources = [];
-let filteredSources = [];
-let news = [];
 
-const NewsStore = Object.assign(EventEmitter.prototype, {
+/**
+ * @class NewStore
+ * @extends {EventEmitter}
+ */
+class NewsStore extends EventEmitter {
+ /**
+   * @desc Represent a NewsStore.
+   * @constructor
+   */
+  constructor() {
+    super();
+    /**
+     * Instantiate the needed parameters
+     */
+    this.sources = [];
+    this.filteredSources = [];
+    this.news = [];
+  }
 
+  /**
+   * @desc emit changes made when the event changes
+   * @returns {object} emits changes made by onChange event
+   */
   emitChange() {
     this.emit(CHANGE_EVENT);
-  },
+  }
 
+  /**
+   * @desc listen and run the callback function when onChange event is fired
+   * @param {func} callback - the function to listen to
+   * @returns {event} emits changes made by onChange event
+   */
   addChangeListener(callback) {
     this.on(CHANGE_EVENT, callback);
-  },
+  }
 
+  /**
+   * @desc stop listening to callback function when onChange event is fired
+   * @param {func} callback - the function to listen to
+   * @returns {event} dont emit changes made by onChange event
+   */
   removeChangeListener(callback) {
     this.removeListener(CHANGE_EVENT, callback);
-  },
+  }
 
+  /**
+   * @desc Get all the news from store
+   * @returns {object} all news in the store
+   */
   getNews() {
-    return news;
-  },
+    return this.news;
+  }
 
+  /**
+   * @desc get all sources from the store
+   * @returns {object} all sources in the store
+   */
   getAllSources() {
-    return sources;
-  },
+    return this.sources;
+  }
 
+  /**
+   * @desc get filtered sources from the store
+   * @returns {object} filtered sources in the store
+   */
   getSources() {
-    return filteredSources;
-  },
+    return this.filteredSources;
+  }
 
+  /**
+   * @desc get the information for a given source
+   * @param {string} sourceId - the id of source to get its information
+   * @returns {object} an object containing the object information
+   */
   getSourceObject(sourceId) {
-    if (sources) {
-      const returnedSources = sources.filter(
+    if (this.sources) {
+      const returnedSources = this.sources.filter(
         source => source.id === sourceId
       );
       if (typeof returnedSources[0] !== 'undefined') {
@@ -50,13 +95,18 @@ const NewsStore = Object.assign(EventEmitter.prototype, {
       }
       return {};
     }
-  },
+  }
 
+  /**
+   * The method is used to reformat sources for the select field
+   * @param {string} queryText - get the sources to redefine
+   * @return {object} sets the state based on sources
+   */
   searchSources(queryText) {
-    return sources.filter(
+    return this.sources.filter(
       source => source.name.toLowerCase().indexOf(queryText) !== -1
     );
-  },
+  }
 
   /**
    * The method is used to reformat sources for the select field
@@ -64,13 +114,12 @@ const NewsStore = Object.assign(EventEmitter.prototype, {
    * @return {object} sets the state based on sources
    */
   selectSources() {
-    return sources.map(source => ({
+    return this.sources.map(source => ({
       value: source.id,
       label: source.name,
       clearableValue: true
     }));
-  },
-
+  }
 
   /**
    * The method is used to reformat sources for the select field
@@ -79,7 +128,7 @@ const NewsStore = Object.assign(EventEmitter.prototype, {
    */
   selectSourcesByCategory() {
     const sourceObj = {};
-    sources.forEach((source) => {
+    this.sources.forEach((source) => {
       if (sourceObj[source.category] !== undefined) {
         sourceObj[source.category]
           .push(`${source.id}_${source.name}_${source.sortBysAvailable[0]}`);
@@ -90,27 +139,35 @@ const NewsStore = Object.assign(EventEmitter.prototype, {
       }
     });
     return sourceObj;
-  },
+  }
 
-  dispatcherIndex: Dispatcher.register((action) => {
+  /**
+   * The method is used to by the Dispatcher
+   * @param {string} action - the action to dispatch
+   * @return {*} the dispatched action
+   */
+  handleActions(action) {
     switch (action.actionType) {
       case ActionTypes.ALL_SOURCES:
-        sources = action.sources;
+        this.sources = action.sources;
         break;
 
       case ActionTypes.ALL_NEWS:
-        news = action.articles;
+        this.news = action.articles;
         break;
 
       case ActionTypes.SEARCH_SOURCES:
-        filteredSources = NewsStore.searchSources(action.queryString);
+        this.filteredSources = this.searchSources(action.queryString);
         break;
 
       default:
       // no operation
     }
-    NewsStore.emitChange();
-  })
-});
+    this.emitChange();
+  }
+}
 
-export default NewsStore;
+const newsStore = new NewsStore();
+Dispatcher.register(newsStore.handleActions.bind(newsStore));
+
+export default newsStore;

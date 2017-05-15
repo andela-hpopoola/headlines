@@ -17,6 +17,7 @@ The application is similar to a modern RSS feed that allows people to view all h
 3. Testing the application
 4. Limitations
 5. How To Contribute
+6. License
 
 
 
@@ -70,4 +71,17 @@ Healines has the following limitations:
 4. Articles are not scraped from the original sources. Users are redirected to the original sources to read any article.
 
 
+## Contribution
+To contribute to the project, follow the instructions below
+ 1. **Fork** the repo on GitHub
+ 2. **Clone** the project to your own machine
+ 3. **Commit** changes to your own branch
+ 4. **Push** your work back up to your fork
+ 5. Submit a **Pull request** so that I can review your changes
 
+NOTE: Be sure to merge the latest from "upstream" before making a pull request!
+
+
+## License
+This project is authored by [Haruna Popoola]() and is licensed 
+for your use, modification, and distribution under [the MIT license](https://en.wikipedia.org/wiki/MIT_License).

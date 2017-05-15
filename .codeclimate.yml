@@ -1,0 +1,21 @@
+engines:
+  rubocop:
+    enabled: true
+  eslint:
+    enabled: true
+  csslint:
+    enabled: false
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - javascript
+ratings:
+  paths:
+  - app/**
+exclude_paths:
+- app/tests/**/*
+- "**/public/**/*"
+
+
+  

@@ -33,9 +33,13 @@ class SortByList extends Component {
         <Link
           to={`news/${this.props.sourceID}/${this.props.sort[index]}`}
           key={index}
-          className={currentSort === this.props.sort[index] ? 'btn btn-default disabled' : 'btn btn-primary'}
+          className={
+            currentSort === this.props.sort[index]
+            ? 'btn btn-default disabled' : 'btn btn-primary'
+          }
           aria-label={index}
-          onClick={this.handleSort.bind(this, this.props.sourceID, this.props.sort[index])}
+          onClick={this.handleSort.bind(this,
+            this.props.sourceID, this.props.sort[index])}
         >
           View { this.props.sort[index]} news
        </Link>

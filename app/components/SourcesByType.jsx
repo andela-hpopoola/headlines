@@ -47,7 +47,12 @@ class SourcesByType extends Component {
 
       return (
         <li className="panel" key={key}>
-          <a data-toggle="collapse" data-parent="#accordion" href={ `#${key}` } >{key.toUpperCase()}</a>
+          <a
+            data-toggle="collapse"
+            data-parent="#accordion"
+            href={ `#${key}` }>
+            {key.toUpperCase()}
+          </a>
             <ul id={key} className="collapse">
                 {body}
             </ul>

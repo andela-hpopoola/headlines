@@ -7,7 +7,10 @@ import SourcesByType from './../../components/SourcesByType.jsx';
 describe('SourcesByType Component', () => {
   const spy = sinon.spy(SourcesByType.prototype, 'loadPage');
   const onClick = () => true;
-  const params = { sport: ['bbc-sport_BBC_top'], entertainment: ['bbc_BBC_top'] };
+  const params = {
+    sport: ['bbc-sport_BBC_top'],
+    entertainment: ['bbc_BBC_top']
+  };
   const wrapper = shallow(
     <SourcesByType
       sourcesObj = {params} onClick={onClick}

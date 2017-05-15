@@ -12,9 +12,14 @@ class Alert extends Component {
    * @return {string} this.getAlert().
    */
   getAlert() {
-    if ((this.props.message !== undefined) && (this.props.message.length > 0)) {
+    if (
+      (this.props.message !== undefined) &&
+      (this.props.message.length > 0)
+    ) {
       const type = `alert alert-${this.props.alertType}`;
-      return <div className={ type } role="alert"> { this.props.message } </div>;
+      return <div className={ type } role="alert">
+        { this.props.message }
+      </div>;
     }
   }
 

@@ -78,7 +78,8 @@ class News extends Component {
   logChange(value) {
     // get the object
     const selectedSourceObject = NewsStore.getSourceObject(value.value);
-    const selectedSortedBy = selectedSourceObject.sortBy ? selectedSourceObject.sortBy[0].toString() : 'none - ';
+    const selectedSortedBy = selectedSourceObject.sortBy ?
+      selectedSourceObject.sortBy[0].toString() : 'none - ';
     this.setState({
       source: value.value,
       sortBy: this.state.sortBy,
@@ -95,7 +96,11 @@ class News extends Component {
   */
   loadPage(source, sortby) {
     const currentSourceObject = NewsStore.getSourceObject(source);
-    this.setState({ currentSourceObject, source, selectedSourceObject: currentSourceObject });
+    this.setState({
+      currentSourceObject,
+      source,
+      selectedSourceObject: currentSourceObject
+    });
     NewsActions.getNews(source, sortby);
   }
 
@@ -115,13 +120,19 @@ class News extends Component {
    * @return {jsx} The News Content
    */
   render() {
-    this.bgImage = { backgroundImage: `url(./images/${this.state.currentSourceObject.category}.jpg)` };
+    this.bgImage = {
+      backgroundImage:
+        `url(./images/${this.state.currentSourceObject.category}.jpg)`
+    };
     const selectOptions = NewsStore.selectSources();
     return (
         <div className="News__page">
             <Nav />
             <section className="top-page-title page-header text-center">
-              <div className="top-page-title__parallax" style={ this.bgImage }></div>
+              <div
+                className="top-page-title__parallax"
+                style={ this.bgImage }>
+              </div>
               <div className="top-page-title__overlay"></div>
               <div className="top-page-title__content">
                 <div className="container">
@@ -165,7 +176,7 @@ class News extends Component {
                       clearableValue= {false}
                     />
 
-                    {/* If there a description to show */}
+                    {/* Show Description */}
                     { Object.keys(this.state.selectedSourceObject).length !== 0 ?
                     <div className="description__text">
 
@@ -173,16 +184,16 @@ class News extends Component {
                       { this.state.selectedSourceObject.description }
 
                       <div className="description__button">
-                        <Link
-                          to={`news/${this.state.source}/${this.state.selectedSortedBy}`}
-                          className="btn btn-primary"
-                          onClick= {
-                            this.loadPage.bind(
-                              this, this.state.source, this.state.selectedSortedBy
-                            )
-                          } >
-                          View {this.state.selectedSourceObject.name }
-                        </Link>
+                      <Link
+                        to={`news/${this.state.source}/${this.state.selectedSortedBy}`}
+                        className="btn btn-primary"
+                        onClick= {
+                          this.loadPage.bind(
+                            this, this.state.source, this.state.selectedSortedBy
+                          )
+                        } >
+                        View {this.state.selectedSourceObject.name }
+                      </Link>
                       </div>
                     </div>
                     : ''

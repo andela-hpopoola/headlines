@@ -72,7 +72,8 @@ class Home extends Component {
         <div>
           <Nav />
           <section className="top-page-title page-header text-center">
-            <div className="top-page-title__parallax" style={ this.bgImage }></div>
+            <div className="top-page-title__parallax" style={ this.bgImage }>
+            </div>
             <div className="top-page-title__overlay"></div>
             <div className="top-page-title__content">
               <div className="container">

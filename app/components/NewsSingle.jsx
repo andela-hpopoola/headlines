@@ -17,20 +17,29 @@ const NewsSingle = (props) => {
           {/* Article Image */}
           <a href={ article.url } target="_blank">
             <div className="article__image">
-              <img src={ article.urlToImage } alt={ article.title } className="img-responsive" />
+              <img
+                src={ article.urlToImage }
+                alt={ article.title }
+                className="img-responsive"
+              />
             </div>
           </a>
           <div className="caption article__body">
             <p className="article__intro">{publishedDate}</p>
             <h3>
-              <a className="article__title" href={ article.url } target="_blank">
+              <a
+                className="article__title"
+                href={ article.url }
+                target="_blank">
                 { article.title }
               </a>
             </h3>
 
             <div>
               <p className="article__lower">
-                <strong className="article__author">{ article.author }</strong>
+                <strong className="article__author">
+                  { article.author }
+                </strong>
               </p>
             </div>
 

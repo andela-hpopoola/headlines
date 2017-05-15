@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 
 /**
- * Source List - List all the sources
+ * @class SourcesList
+ * @desc List all the sources
  * @param {object} props get the properties
  * @returns {jsx} the page navigation
  */
@@ -26,7 +27,7 @@ const SourcesList = (props) => {
 };
 
 /**
- * Set the PropTypes for Sources List
+ * @desc Set the PropTypes for Sources List
  */
 SourcesList.propTypes = {
   sources: PropTypes.array

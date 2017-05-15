@@ -11,14 +11,16 @@ import Nav from './Nav.jsx';
 import Footer from './Footer.jsx';
 
 /**
- * Class to display news
+ * @class News
+ * @desc Class to display news
  * @extends React.Component
  */
 class News extends Component {
 
   /**
-   * Set the Initial conditions for showing the News
+   * @desc Set the Initial conditions for showing the News
    * @param {object} props - The property of the News Class
+   * @constructor
    */
   constructor(props) {
     super(props);
@@ -41,7 +43,7 @@ class News extends Component {
   }
 
   /**
-   * Invoked immediately after a component is mounted
+   * @desc Invoked immediately after a component is mounted
    * @return {void} returns nothing
    */
   componentDidMount() {
@@ -49,7 +51,7 @@ class News extends Component {
   }
 
   /**
-   * Invoked immediately when a component is unmounted
+   * @desc Invoked immediately when a component is unmounted
    * @return {void} returns nothing
    */
   componentWillUnmount() {
@@ -57,7 +59,7 @@ class News extends Component {
   }
 
   /**
-   * The method that for handling change
+   * @desc The method that for handling change
    * @return {void} returns nothing
    */
   onChange() {
@@ -71,7 +73,7 @@ class News extends Component {
   }
 
   /**
-   * The method that for handling change
+   * @desc The method that for handling change
    * @param {string} value - the selected value from select field
    * @return {object} sets the state based on value
    */
@@ -89,7 +91,7 @@ class News extends Component {
   }
 
   /**
-   * This loads the page in the application
+   * @desc This loads the page in the application
    * @param {string} source - the source of news to load
    * @param {string} sortby - the sorting criterion
    * @return {object} get the news based on selected source
@@ -105,7 +107,7 @@ class News extends Component {
   }
 
   /**
-   * The method that for handling change
+   * @desc The method that for handling change
    * @param {string} source - the source you wish to load
    * @param {string} sortBy - the sorting criterion
    * @return {object} sets the state based on value
@@ -116,7 +118,7 @@ class News extends Component {
   }
 
   /**
-   * Display the News
+   * @desc Display the News
    * @return {jsx} The News Content
    */
   render() {
@@ -215,7 +217,7 @@ class News extends Component {
 }
 
 /**
- * Set the PropTypes for News
+ * @desc Set the PropTypes for News
  */
 News.propTypes = {
   params: PropTypes.object,

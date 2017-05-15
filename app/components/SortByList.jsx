@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 
 /**
- * Source List - List all the sources
+ * @class SortByList
+ * @desc  List all the sources
  * @param {object} props get the properties
  * @returns {jsx} the page navigation
  */
 class SortByList extends Component {
   /**
-   * Returns the value in the Search Field
+   * @desc Returns the value in the Search Field
    * @param {string} source - source of news
    * @param {string} sortBy - sorting type
    * @return {string} Value in String Field

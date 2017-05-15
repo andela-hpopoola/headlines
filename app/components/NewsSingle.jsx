@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Share from './Share.jsx';
 
 /**
- * News Single - Process a single article
+ * @desc Process a single article
  * @param {object} props get the properties
  * @returns {jsx} the page navigation
  */
@@ -64,7 +64,7 @@ const NewsSingle = (props) => {
 };
 
 /**
- * Set the PropTypes for NewsSingle
+ * @desc Set the PropTypes for NewsSingle
  */
 NewsSingle.propTypes = {
   article: PropTypes.object

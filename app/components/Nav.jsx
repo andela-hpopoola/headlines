@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 
 /**
- * Page Navigation
+ * @class Nav
+ * @desc Page Navigation
  * @returns {jsx} the page navigation
  */
 class Nav extends Component {
   /**
-   * Renders the Top Navigation
+   * @desc Renders the Top Navigation
    * @return {string} Navigation
    */
   render() {

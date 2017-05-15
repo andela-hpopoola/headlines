@@ -40,17 +40,17 @@ class Routes extends Component {
           <Route
             path="news/:source/:sortby"
             component={News}
-            onEnter={ Routes.requireAuth }
+            onEnter={Routes.requireAuth}
           />
           <Route
             path="news"
             component={Home}
-            onEnter={ Routes.requireAuth }
+            onEnter={Routes.requireAuth}
           />
           <Route
             path="logout"
             component={Logout}
-            onEnter={ Routes.requireAuth }
+            onEnter={Routes.requireAuth}
           />
         </Route>
       </Router>

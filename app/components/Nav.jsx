@@ -21,18 +21,18 @@ class Nav extends Component {
                 type="button"
                 className="navbar-toggle collapsed"
                 data-toggle="collapse"
-                data-target="#bs-example-navbar-collapse-1"
+                data-target="#navbar-target"
                 aria-expanded="false">
                 <span className="sr-only">Toggle navigation</span>
-                <span className="icon-bar"></span>
-                <span className="icon-bar"></span>
-                <span className="icon-bar"></span>
+                <span className="icon-bar" />
+                <span className="icon-bar" />
+                <span className="icon-bar" />
               </button>
               <a className="navbar-brand" href="#/news">
                 <img src="./images/logo.png" alt="Headlines Logo"/>
               </a>
             </div>
-            <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div className="collapse navbar-collapse" id="navbar-target">
               <ul className="nav navbar-nav navbar-right">
                 <li><Link to="logout"> Logout </Link></li>
               </ul>

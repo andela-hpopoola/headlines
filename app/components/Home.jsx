@@ -72,8 +72,8 @@ class Home extends Component {
         <div>
           <Nav />
           <section className="top-page-title page-header text-center">
-            <div className="top-page-title__parallax" style={ this.bgImage }></div>
-            <div className="top-page-title__overlay"></div>
+            <div className="top-page-title__parallax" style={this.bgImage} />
+            <div className="top-page-title__overlay" />
             <div className="top-page-title__content">
               <div className="container">
                 <div className="top-page-title__content-text">
@@ -82,8 +82,8 @@ class Home extends Component {
                     <div className="lead col-sm-offset-2 col-sm-8">
                       Get Live Headlines from over 70 Sources.
                       <SearchForm
-                        onChange={ this.searchSources }
-                        sources={ this.state.sources }
+                        onChange={this.searchSources}
+                        sources={this.state.sources}
                       />
                     </div>
                   </div>
@@ -92,7 +92,7 @@ class Home extends Component {
             </div>
           </section>
           <div className="container gutter-top">
-              <SourcesList sources={ this.state.sources } />
+              <SourcesList sources={this.state.sources} />
           </div>
           <Footer />
         </div>

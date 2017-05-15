@@ -36,18 +36,23 @@ class SourcesByType extends Component {
     return Object.keys(sourcesObj).map((key) => {
       const body = sourcesObj[key].map((source, index) => {
         const [linkID, linkSource, linkSortBy] = source.split('_');
-        return <li key={index}><Link
+        return (<li key={index}><Link
           className="Collapsible__link"
           to={`news/${linkID}/${linkSortBy}`}
           onClick={this.loadPage.bind(this, linkID, linkSortBy)}
           >
           {linkSource}
-          </Link></li>;
+        </Link></li>);
       });
 
       return (
         <li className="panel" key={key}>
-          <a data-toggle="collapse" data-parent="#accordion" href={ `#${key}` } >{key.toUpperCase()}</a>
+          <a
+            data-toggle="collapse"
+            data-parent="#accordion"
+            href={`#${key}`}>
+            {key.toUpperCase()}
+          </a>
             <ul id={key} className="collapse">
                 {body}
             </ul>

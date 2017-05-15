@@ -11,7 +11,6 @@ const signOut = () => {
   const history = createHistory({ forceRefresh: true });
   if (global.window.localStorage.getItem('profile')) {
     global.window.localStorage.removeItem('profile');
-    global.window.localStorage.removeItem('expiryDate');
     history.push('/#/');
     global.window.location.reload();
   }

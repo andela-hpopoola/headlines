@@ -32,9 +32,15 @@ describe('Alert Component', () => {
 
   it('should render the alert type', () => {
     const renderer = TestUtils.createRenderer();
-    renderer.render(<Alert alertType={ props.alertType } message={ props.message } />);
+    renderer.render(<Alert
+                      alertType={ props.alertType }
+                      message={ props.message } />);
     const actual = renderer.getRenderOutput();
-    const expected = <div className={ `alert alert-${props.alertType}` } role="alert"> { props.message } </div>;
+    const expected = <div
+                      className={ `alert alert-${props.alertType}` }
+                      role="alert">
+                      { props.message }
+                     </div>;
 
     expect(actual).toIncludeJSX(expected);
   });

@@ -15,22 +15,31 @@ const NewsSingle = (props) => {
       <div className="col-sm-6">
         <div className="thumbnail article">
           {/* Article Image */}
-          <a href={ article.url } target="_blank">
+          <a href={article.url} target="_blank">
             <div className="article__image">
-              <img src={ article.urlToImage } alt={ article.title } className="img-responsive" />
+              <img
+                src={article.urlToImage}
+                alt={article.title}
+                className="img-responsive"
+              />
             </div>
           </a>
           <div className="caption article__body">
             <p className="article__intro">{publishedDate}</p>
             <h3>
-              <a className="article__title" href={ article.url } target="_blank">
-                { article.title }
+              <a
+                className="article__title"
+                href={article.url}
+                target="_blank">
+                {article.title}
               </a>
             </h3>
 
             <div>
               <p className="article__lower">
-                <strong className="article__author">{ article.author }</strong>
+                <strong className="article__author">
+                  {article.author}
+                </strong>
               </p>
             </div>
 
@@ -42,7 +51,7 @@ const NewsSingle = (props) => {
               </div>
               <div className="col-xs-4">
                 <a
-                href={ article.url }
+                href={article.url}
                 className="btn btn-primary btn-read-more"
                 target="_blank"> Read More </a>
               </div>

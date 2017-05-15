@@ -37,9 +37,21 @@ class Routes extends Component {
       <Router history={hashHistory}>
         <Route path="/" component={Main}>
           <IndexRoute component={Login} />
-          <Route path="news/:source/:sortby" component={News} onEnter={ Routes.requireAuth } />
-          <Route path="news" component={Home} onEnter={ Routes.requireAuth } />
-          <Route path="logout" component={Logout} onEnter={ Routes.requireAuth } />
+          <Route
+            path="news/:source/:sortby"
+            component={News}
+            onEnter={Routes.requireAuth}
+          />
+          <Route
+            path="news"
+            component={Home}
+            onEnter={Routes.requireAuth}
+          />
+          <Route
+            path="logout"
+            component={Logout}
+            onEnter={Routes.requireAuth}
+          />
         </Route>
       </Router>
     );

@@ -3,14 +3,15 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 
 /**
- * Sources By Type - List all the sources
+ * @class SourcesByType
+ * @desc List all the sources
  * @param {object} props get the properties
  * @returns {jsx} the page navigation
  */
 class SourcesByType extends Component {
 
   /**
-   * Set the Initial conditions for Sources By Type
+   * @desc Set the Initial conditions for Sources By Type
    * @param {object} props - The property of the Sources by Type Class
    */
   constructor(props) {
@@ -18,7 +19,7 @@ class SourcesByType extends Component {
     this.loadPage = this.loadPage.bind(this);
   }
   /**
-   * Returns the value in the Search Field
+   * @desc Returns the value in the Search Field
    * @param {string} source - source of news
    * @param {string} sortBy - sorting type
    * @return {string} Value in String Field
@@ -28,7 +29,7 @@ class SourcesByType extends Component {
   }
 
   /**
-   * Returns the sources sorted by categories
+   * @desc Returns the sources sorted by categories
    * @param {string} sourcesObj - source of news to sort
    * @return {object} The sorted sources by category
    */
@@ -62,7 +63,7 @@ class SourcesByType extends Component {
   }
 
   /**
-   * Display the sorted sources
+   * @desc Display the sorted sources
    * @return {jsx} The Sorted Sources
    */
   render() {
@@ -76,7 +77,7 @@ class SourcesByType extends Component {
 }
 
 /**
- * Set the PropTypes for Sources List
+ * @desc Set the PropTypes for Sources List
  */
 SourcesByType.propTypes = {
   sourcesObj: PropTypes.object,

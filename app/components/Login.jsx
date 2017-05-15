@@ -4,7 +4,7 @@ import GoogleLogin from 'react-google-login';
 
 
 /**
- * Returns the Success Message.
+ * @desc Returns the Success Message.
  * @param {object} response - Returns the User Profile
  * @return {object} the error message
  */
@@ -32,7 +32,7 @@ clientID += '.apps.googleusercontent.com';
  */
 class Login extends Component {
   /**
-   * Show the Login Component
+   * @desc Show the Login Component
    * @return {jsx} Show the login component
    */
   render() {

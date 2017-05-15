@@ -15,9 +15,6 @@ class NewsStore extends EventEmitter {
    */
   constructor() {
     super();
-    /**
-     * Instantiate the needed parameters
-     */
     this.sources = [];
     this.filteredSources = [];
     this.news = [];

@@ -7,13 +7,14 @@ import Logout from './Logout.jsx';
 import News from './News.jsx';
 
 /**
- * Class to route all the pages
+ * @class Routes
+ * @desc Class to route all the pages
  * @extends React.Component
  */
 class Routes extends Component {
 
   /**
-   * Check if the user is logged in
+   * @desc Check if the user is logged in
    * @param {string} nextState the next state to load
    * @param {string} replace the page to replace
    * @return {boolean} the login status
@@ -28,7 +29,7 @@ class Routes extends Component {
     }
   }
   /**
-   * Render the Routes of the News Page
+   * @desc Render the Routes of the News Page
    * @return {Page} the routes of the page
    */
   render() {

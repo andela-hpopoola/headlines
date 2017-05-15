@@ -8,7 +8,8 @@ import Footer from './Footer.jsx';
 
 
 /**
- * Class to display the Home Page
+ * @class Home
+ * @desc Class to display the Home Page
  * @extends React.Component
  */
 class Home extends Component {
@@ -16,6 +17,7 @@ class Home extends Component {
   /**
    * Set the Initial conditions for showing the News
    * @param {object} props - The property of the News Class
+   * @constructor
    */
   constructor(props) {
     super(props);
@@ -26,7 +28,7 @@ class Home extends Component {
   }
 
   /**
-   * Invoked immediately after a component is mounted
+   * @desc Invoked immediately after a component is mounted
    * @return {void} returns nothing
    */
   componentDidMount() {
@@ -34,7 +36,7 @@ class Home extends Component {
   }
 
   /**
-   * Invoked immediately when a component is unmounted
+   * @desc Invoked immediately when a component is unmounted
    * @return {void} returns nothing
    */
   componentWillUnmount() {
@@ -42,7 +44,7 @@ class Home extends Component {
   }
 
   /**
-   * The method that for handling change
+   * @desc The method that for handling change
    * @return {void} returns nothing
    */
   onChange() {
@@ -52,7 +54,7 @@ class Home extends Component {
   }
 
   /**
-   * Search for sources
+   * @desc Search for sources
    * @param {string} queryText what we wish to search for
    * @return {void} returns nothing
    */
@@ -63,7 +65,7 @@ class Home extends Component {
   }
 
   /**
-   * Display the News
+   * @desc Display the News
    * @return {jsx} The News Content
    */
   render() {

@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 /**
- * Class displaying an alert
+ * @class Alert
+ * @desc Class displaying an alert
  * @extends React.Component
  */
 class Alert extends Component {
 
   /**
-   * Displays Alert Message.
+   * @desc Displays Alert Message.
    * @return {string} this.getAlert().
    */
   getAlert() {
@@ -26,7 +27,7 @@ class Alert extends Component {
   }
 
   /**
-   * Renders the Alert Message
+   * @desc Renders the Alert Message
    * @return {string} Alert.
    */
   render() {

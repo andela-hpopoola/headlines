@@ -2,6 +2,7 @@ import React from 'react';
 
 /**
  * Footer
+ * @desc the footer used in the application
  * @returns {jsx} the page footer
  */
 const Footer = () => (

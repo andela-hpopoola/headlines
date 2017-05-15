@@ -18,13 +18,14 @@ const GooglePlusIcon = generateShareIcon('google');
 const LinkedinIcon = generateShareIcon('linkedin');
 
 /**
- * Class to display news
+ * @class Share
+ * @desc Class to display news
  * @extends React.Component
  */
 class Share extends Component {
 
   /**
-   * Set the Initial conditions for sharing the News
+   * @desc Set the Initial conditions for sharing the News
    * @param {object} props - The property of the Share Class
    */
   constructor(props) {
@@ -33,7 +34,7 @@ class Share extends Component {
   }
 
   /**
-   * Display the News Share
+   * @desc Display the News Share
    * @return {jsx} The News Share Logo
    */
   render() {
@@ -89,7 +90,7 @@ class Share extends Component {
   }
 }
 /**
- * Set the PropTypes for Share
+ * @desc Set the PropTypes for Share
  */
 Share.propTypes = {
   params: PropTypes.object,

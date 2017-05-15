@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import NewsSingle from './NewsSingle.jsx';
 
 /**
- * News List - Process articles in group
+ * @desc Process articles in group
  * @param {object} props get the properties
  * @returns {jsx} the page navigation
  */
@@ -22,7 +22,7 @@ const NewsList = (props) => {
 };
 
 /**
- * Set the PropTypes for NewsList
+ * @desc Set the PropTypes for NewsList
  */
 NewsList.propTypes = {
   articles: PropTypes.array,

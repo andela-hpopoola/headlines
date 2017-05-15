@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 /**
- * Class displaying the Search Form
+ * @class SearchForm
+ * @desc Class displaying the Search Form
  * @extends React.Component
  */
 class SearchForm extends Component {
 
   /**
-   * Set the Initial conditions for showing the Search Form
+   * @desc Set the Initial conditions for showing the Search Form
    * @param {object} props - The property of the Search Form Class
    */
   constructor(props) {
@@ -16,7 +17,7 @@ class SearchForm extends Component {
     this.handleSearch = this.handleSearch.bind(this);
   }
   /**
-   * Returns the value in the Search Field
+   * @desc Returns the value in the Search Field
    * @param {function} e - event of the field
    * @return {string} Value in String Field
    */
@@ -25,7 +26,7 @@ class SearchForm extends Component {
   }
 
   /**
-   * Renders the Search Input
+   * @desc Renders the Search Input
    * @return {string} Search Form
    */
   render() {
@@ -44,7 +45,7 @@ class SearchForm extends Component {
 }
 
 /**
- * Set the PropTypes for Search Form
+ * @desc Set the PropTypes for Search Form
  */
 SearchForm.propTypes = {
   sources: PropTypes.array,

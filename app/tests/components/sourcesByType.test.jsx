@@ -13,7 +13,7 @@ describe('SourcesByType Component', () => {
   };
   const wrapper = shallow(
     <SourcesByType
-      sourcesObj = {params} onClick={onClick}
+      sources = {params} onClick={onClick}
     />
   );
 

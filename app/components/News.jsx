@@ -29,8 +29,8 @@ class News extends Component {
       sortBy: this.props.params.sortby || '',
       source: this.props.params.source || '',
       sources: [],
-      selectedSourceObject: {},
-      currentSourceObject: {},
+      selectedSource: {},
+      currentSource: {},
       selectedSortedBy: ''
     };
 
@@ -63,12 +63,11 @@ class News extends Component {
    * @return {void} returns nothing
    */
   onChange() {
-    const currentSourceObject = NewsStore.getSourceObject(this.state.source);
+    const currentSource = NewsStore.getSourceCategory(this.state.source);
     this.setState({
       articles: NewsStore.getNews(this.state.source, this.state.sortBy) || [],
-      sourceObj: NewsStore.getSourceObject(this.state.source) || [],
       sources: NewsStore.getAllSources() || [],
-      currentSourceObject
+      currentSource
     });
   }
 
@@ -79,13 +78,13 @@ class News extends Component {
    */
   logChange(value) {
     // get the object
-    const selectedSourceObject = NewsStore.getSourceObject(value.value);
-    const selectedSortedBy = selectedSourceObject.sortBy ?
-      selectedSourceObject.sortBy[0].toString() : 'none - ';
+    const selectedSource = NewsStore.getSourceCategory(value.value);
+    const selectedSortedBy = selectedSource.sortBy ?
+      selectedSource.sortBy[0].toString() : 'none - ';
     this.setState({
       source: value.value,
       sortBy: this.state.sortBy,
-      selectedSourceObject,
+      selectedSource,
       selectedSortedBy
     });
   }
@@ -97,11 +96,11 @@ class News extends Component {
    * @return {object} get the news based on selected source
   */
   loadPage(source, sortby) {
-    const currentSourceObject = NewsStore.getSourceObject(source);
+    const currentSource = NewsStore.getSourceCategory(source);
     this.setState({
-      currentSourceObject,
+      currentSource,
       source,
-      selectedSourceObject: currentSourceObject
+      selectedSource: currentSource
     });
     NewsActions.getNews(source, sortby);
   }
@@ -124,7 +123,7 @@ class News extends Component {
   render() {
     this.bgImage = {
       backgroundImage:
-        `url(./images/${this.state.currentSourceObject.category}.jpg)`
+        `url(./images/${this.state.currentSource.category}.jpg)`
     };
     const selectOptions = NewsStore.selectSources();
     const newsURL = `news/${this.state.source}/${this.state.selectedSortedBy}`;
@@ -139,14 +138,14 @@ class News extends Component {
               <div className="top-page-title__content">
                 <div className="container">
                   <div className="top-page-title__content-text">
-                    <h3>{ this.state.currentSourceObject.name }</h3>
+                    <h3>{ this.state.currentSource.name }</h3>
                     <div className="row">
                       <div className="lead col-sm-offset-2 col-sm-8">
-                        { this.state.currentSourceObject.description }
+                        { this.state.currentSource.description }
                       </div>
                     </div>
                     <SortByList
-                      sort = {this.state.currentSourceObject.sortBy || []}
+                      sort = {this.state.currentSource.sortBy || []}
                       sourceID = {this.state.source}
                       currentSort = {this.state.sortBy}
                       onClick={this.loadSortPage}
@@ -172,7 +171,7 @@ class News extends Component {
                     <h3>Select Source</h3>
                     <Select
                       name="get_sources_select"
-                      value={this.state.selectedSourceObject.id}
+                      value={this.state.selectedSource.id}
                       options={selectOptions}
                       onChange={this.logChange}
                       clearableValue= {false}
@@ -180,11 +179,11 @@ class News extends Component {
 
                     {/* Show Description */}
                     { Object.keys(
-                      this.state.selectedSourceObject).length !== 0 ?
+                      this.state.selectedSource).length !== 0 ?
 
                     <div className="description__text">
-                      <h5>{this.state.selectedSourceObject.name}</h5>
-                      {this.state.selectedSourceObject.description}
+                      <h5>{this.state.selectedSource.name}</h5>
+                      {this.state.selectedSource.description}
 
                       <div className="description__button">
                       <Link
@@ -195,7 +194,7 @@ class News extends Component {
                             this, this.state.source, this.state.selectedSortedBy
                           )
                         } >
-                        View {this.state.selectedSourceObject.name }
+                        View {this.state.selectedSource.name }
                       </Link>
                       </div>
                     </div>
@@ -203,7 +202,7 @@ class News extends Component {
                     }
                   </div>
                   <SourcesByType
-                    sourcesObj = {NewsStore.selectSourcesByCategory()}
+                    sources = {NewsStore.selectSourcesByCategory()}
                     onClick={this.loadPage}
                   />
                 </div>

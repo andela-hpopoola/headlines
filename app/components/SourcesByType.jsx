@@ -30,12 +30,12 @@ class SourcesByType extends Component {
 
   /**
    * @desc Returns the sources sorted by categories
-   * @param {string} sourcesObj - source of news to sort
+   * @param {string} sources - source of news to sort
    * @return {object} The sorted sources by category
    */
-  generateAccordion(sourcesObj) {
-    return Object.keys(sourcesObj).map((key) => {
-      const body = sourcesObj[key].map((source, index) => {
+  generateAccordion(sources) {
+    return Object.keys(sources).map((key) => {
+      const body = sources[key].map((source, index) => {
         const [linkID, linkSource, linkSortBy] = source.split('_');
         return (<li key={index}><Link
           className="Collapsible__link"
@@ -70,7 +70,7 @@ class SourcesByType extends Component {
     return (
         <ul id="accordion" className="widget thumbnail Collapsible">
           <h3> News Source by Category </h3><br />
-          {this.generateAccordion(this.props.sourcesObj)}
+          {this.generateAccordion(this.props.sources)}
         </ul>
     );
   }
@@ -80,7 +80,7 @@ class SourcesByType extends Component {
  * @desc Set the PropTypes for Sources List
  */
 SourcesByType.propTypes = {
-  sourcesObj: PropTypes.object,
+  sources: PropTypes.object,
   onClick: PropTypes.func
 };
 

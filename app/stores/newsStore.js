@@ -66,7 +66,7 @@ class NewsStore extends EventEmitter {
    * @desc get filtered sources from the store
    * @returns {object} filtered sources in the store
    */
-  getSources() {
+  getFilteredSources() {
     return this.filteredSources;
   }
 
@@ -75,18 +75,18 @@ class NewsStore extends EventEmitter {
    * @param {string} sourceId - the id of source to get its information
    * @returns {object} an object containing the object information
    */
-  getSourceObject(sourceId) {
+  getSourceCategory(sourceId) {
     if (this.sources) {
-      const returnedSources = this.sources.filter(
-        source => source.id === sourceId
+      const source = this.sources.filter(
+        value => value.id === sourceId
       );
-      if (typeof returnedSources[0] !== 'undefined') {
+      if (typeof source[0] !== 'undefined') {
         return {
           id: sourceId,
-          name: returnedSources[0].name,
-          sortBy: returnedSources[0].sortBysAvailable,
-          description: returnedSources[0].description,
-          category: returnedSources[0].category,
+          name: source[0].name,
+          sortBy: source[0].sortBysAvailable,
+          description: source[0].description,
+          category: source[0].category,
         };
       }
       return {};
@@ -123,18 +123,18 @@ class NewsStore extends EventEmitter {
    * @return {object} sets the state based on sources
    */
   selectSourcesByCategory() {
-    const sourceObj = {};
+    const sourceCategory = {};
     this.sources.forEach((source) => {
-      if (sourceObj[source.category] !== undefined) {
-        sourceObj[source.category]
+      if (sourceCategory[source.category] !== undefined) {
+        sourceCategory[source.category]
           .push(`${source.id}_${source.name}_${source.sortBysAvailable[0]}`);
       } else {
-        sourceObj[source.category] = [];
-        sourceObj[source.category]
+        sourceCategory[source.category] = [];
+        sourceCategory[source.category]
           .push(`${source.id}_${source.name}_${source.sortBysAvailable[0]}`);
       }
     });
-    return sourceObj;
+    return sourceCategory;
   }
 
   /**

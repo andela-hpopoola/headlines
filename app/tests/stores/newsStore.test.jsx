@@ -55,14 +55,14 @@ describe('News Store', () => {
   });
 
   it('should return a given source when searched by id', () => {
-    const actualObj = NewsStore.getSourceObject('bbc-news');
-    const actual = actualObj.name;
+    const actualCategory = NewsStore.getSourceCategory('bbc-news');
+    const actual = actualCategory.name;
     const expected = 'BBC News';
     expect(actual).toEqual(expected);
   });
 
   it('should return an empty object with a non-existent object', () => {
-    const actual = NewsStore.getSourceObject('non-existent-source');
+    const actual = NewsStore.getSourceCategory('non-existent-source');
     const expected = {};
     expect(actual).toEqual(expected);
   });
@@ -72,7 +72,7 @@ describe('News Store', () => {
       actionType: ActionTypes.SEARCH_SOURCES,
       queryString: 'non-existent-source'
     });
-    const actual = NewsStore.getSources();
+    const actual = NewsStore.getFilteredSources();
     const expected = [];
     expect(actual).toEqual(expected);
   });

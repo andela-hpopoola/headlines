@@ -61,7 +61,7 @@ class Home extends Component {
   searchSources(queryText) {
     const query = queryText.toLowerCase();
     NewsActions.searchSources(query);
-    this.setState({ sources: NewsStore.getSources() });
+    this.setState({ sources: NewsStore.getFilteredSources() });
   }
 
   /**

@@ -9,6 +9,7 @@ import GoogleLogin from 'react-google-login';
  * @return {object} the error message
  */
 const getResponseFromGoogle = (response) => {
+  // get the profileObj from Google response
   const profile = response.profileObj;
   const history = createHistory({ forceRefresh: true });
   if (profile) {
